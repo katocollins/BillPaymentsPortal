@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/ReportMaster.master" AutoEventWireup="true" CodeFile="BankTrans.aspx.cs" Inherits="BankTrans" Title="BANK TRANSACTIONS" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/ReportMaster.master" AutoEventWireup="true" CodeFile="BankTrans.aspx.cs" Inherits="BankTrans" Title="BANK TRANSACTIONS" %>
 
 <%@ Register Assembly="CrystalDecisions.Web, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304"
     Namespace="CrystalDecisions.Web" TagPrefix="CR" %>

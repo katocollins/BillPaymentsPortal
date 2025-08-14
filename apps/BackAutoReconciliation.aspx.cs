@@ -1,267 +1,273 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
+using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Collections;
-using System.IO;
-using CrystalDecisions.CrystalReports.Engine;
-using CrystalDecisions.Shared;
 
-public partial class BackAutoReconciliation : System.Web.UI.Page
+namespace apps
 {
-    ProcessPay Process = new ProcessPay();
-    DataLogin datafile = new DataLogin();
-    Datapay datapay = new Datapay();
-    BusinessLogin bll = new BusinessLogin();
-    DataTable dataTable = new DataTable();
-    DataTable dtable = new DataTable();
-    string vendorReconfile = "";
-    private ReportDocument Rptdoc = new ReportDocument();
-
-    DataFileProcess dfile = new DataFileProcess();
-    private ArrayList fileContents;
-    protected void Page_Load(object sender, EventArgs e)
+    public partial class BackAutoReconciliation : System.Web.UI.Page
     {
-        try
-        {
-            //string RoleId = Session["RoleCode"].ToString();
-            //if (isRoleAuthorisedToVisitPage(RoleId))
-            //{
-            //    if (IsPostBack == false)
-            //    {
-            //        LoadData();
-            //        ToggleVendor();
-            //        MultiView1.ActiveViewIndex = 0;
-            //        DisableBtnsOnClick();
-            //    }
-            //}
-            //else
-            //{
-            //    Response.Redirect("UnauthorisedAccess.aspx");
-            //}
-            if (IsPostBack == false)
-            {
-                LoadData();
-                ToggleVendor();
-                MultiView1.ActiveViewIndex = 0;
-                Button MenuTool = (Button)Master.FindControl("btnCallSystemTool");
-                Button MenuPayment = (Button)Master.FindControl("btnCallPayments");
-                Button MenuReport = (Button)Master.FindControl("btnCalReports");
-                Button MenuRecon = (Button)Master.FindControl("btnCalRecon");
-                Button MenuAccount = (Button)Master.FindControl("btnCallAccountDetails");
-                Button MenuBatching = (Button)Master.FindControl("btnCallBatching");
-                MenuTool.Font.Underline = false;
-                MenuPayment.Font.Underline = false;
-                MenuReport.Font.Underline = false;
-                MenuRecon.Font.Underline = true;
-                MenuAccount.Font.Underline = false;
-                MenuBatching.Font.Underline = false;
-                DisableBtnsOnClick();
-            }
-            else
-            {
+        ProcessPay Process = new ProcessPay();
+        DataLogin datafile = new DataLogin();
+        Datapay datapay = new Datapay();
+        BusinessLogin bll = new BusinessLogin();
+        DataTable dataTable = new DataTable();
+        DataTable dtable = new DataTable();
+        string vendorReconfile = "";
+        private ReportDocument Rptdoc = new ReportDocument();
 
-            }
-        }
-        catch (Exception ex)
+        DataFileProcess dfile = new DataFileProcess();
+        private ArrayList fileContents;
+        protected void Page_Load(object sender, EventArgs e)
         {
-            ShowMessage(ex.Message, true);
-        }
-    }
-    private bool isRoleAuthorisedToVisitPage(string RoleId)
-    {
-        bool authorised = false;
-        DataTable dt = (DataTable)Session["RolePageMatrix"];
-        ArrayList roleIds = new ArrayList();
-        string currenePage = GetCurrentPage();
-        if (dt.Rows.Count > 0)
-        {
-            foreach (DataRow dr in dt.Rows)
+            try
             {
-                string page = dr["OtherPages"].ToString();
-                if (page.Trim().ToUpper().Equals(currenePage.Trim().ToUpper()))
+                //string RoleId = Session["RoleCode"].ToString();
+                //if (isRoleAuthorisedToVisitPage(RoleId))
+                //{
+                //    if (IsPostBack == false)
+                //    {
+                //        LoadData();
+                //        ToggleVendor();
+                //        MultiView1.ActiveViewIndex = 0;
+                //        DisableBtnsOnClick();
+                //    }
+                //}
+                //else
+                //{
+                //    Response.Redirect("UnauthorisedAccess.aspx");
+                //}
+                if (IsPostBack == false)
                 {
-                    roleIds.Add(dr["RoleId"].ToString().Trim());
+                    LoadData();
+                    ToggleVendor();
+                    MultiView1.ActiveViewIndex = 0;
+                    Button MenuTool = (Button)Master.FindControl("btnCallSystemTool");
+                    Button MenuPayment = (Button)Master.FindControl("btnCallPayments");
+                    Button MenuReport = (Button)Master.FindControl("btnCalReports");
+                    Button MenuRecon = (Button)Master.FindControl("btnCalRecon");
+                    Button MenuAccount = (Button)Master.FindControl("btnCallAccountDetails");
+                    Button MenuBatching = (Button)Master.FindControl("btnCallBatching");
+                    MenuTool.Font.Underline = false;
+                    MenuPayment.Font.Underline = false;
+                    MenuReport.Font.Underline = false;
+                    MenuRecon.Font.Underline = true;
+                    MenuAccount.Font.Underline = false;
+                    MenuBatching.Font.Underline = false;
+                    DisableBtnsOnClick();
+                }
+                else
+                {
+
                 }
             }
-            if (roleIds.Contains(RoleId.Trim()))
+            catch (Exception ex)
             {
-                authorised = true;
+                ShowMessage(ex.Message, true);
             }
         }
-        return authorised;
-    }
-    private string GetCurrentPage()
-    {
-        string sPath = System.Web.HttpContext.Current.Request.Url.AbsolutePath;
-        System.IO.FileInfo oInfo = new System.IO.FileInfo(sPath);
-        string sRet = oInfo.Name;
-        return sRet;
-    }
-    private void LoadData()
-    {
-        bll.LoadVendorsToReconcile(cboVendor);
-        bll.LoadHours(ddFromHour);
-        bll.LoadHours(ddToHour);
-    }
-
-    private void ToggleVendor()
-    {
-        string districtcode = Session["DistrictCode"].ToString();
-        string role = Session["RoleCode"].ToString();
-        if (role.Equals("005"))
+        private bool isRoleAuthorisedToVisitPage(string RoleId)
         {
-            cboVendor.Enabled = false;
-            cboVendor.SelectedIndex = cboVendor.Items.IndexOf(cboVendor.Items.FindByValue(districtcode));
-        }
-        else
-        {
-            cboVendor.Enabled = true;
-        }
-    }
-
-    private void ShowMessage(string Message, bool Error)
-    {
-        Label lblmsg = (Label)Master.FindControl("lblmsg");
-        if (Error) { lblmsg.ForeColor = System.Drawing.Color.Red; lblmsg.Font.Bold = true; }
-        else { lblmsg.ForeColor = System.Drawing.Color.Green; lblmsg.Font.Bold = true; }
-        if (Message == ".")
-        {
-            lblmsg.Text = ".";
-        }
-        else
-        {
-            lblmsg.Text = "MESSAGE: " + Message.ToUpper();
-        }
-    }
-    private void DisableBtnsOnClick()
-    {
-        string strProcessScript = "this.value='Working...';this.disabled=true;";
-        //btnOK.Attributes.Add("onclick", strProcessScript + ClientScript.GetPostBackEventReference(btnOK, "").ToString());
-        Button1.Attributes.Add("onclick", strProcessScript + ClientScript.GetPostBackEventReference(Button1, "").ToString());
-        Button2.Attributes.Add("onclick", strProcessScript + ClientScript.GetPostBackEventReference(Button2, "").ToString());
-    }
-    protected void cboTelecom_DataBound(object sender, EventArgs e)
-    {
-        cboVendor.Items.Insert(0, new ListItem("Select", "0"));
-    }
-    protected void btnOK_Click(object sender, EventArgs e)
-    {
-        try
-        {
-            string vendorcode = cboVendor.SelectedValue.ToString();
-            if (vendorcode.Equals("0"))
+            bool authorised = false;
+            DataTable dt = (DataTable)Session["RolePageMatrix"];
+            ArrayList roleIds = new ArrayList();
+            string currenePage = GetCurrentPage();
+            if (dt.Rows.Count > 0)
             {
-                ShowMessage("Please Select Vendor to Reconcile".ToUpper(), true);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    string page = dr["OtherPages"].ToString();
+                    if (page.Trim().ToUpper().Equals(currenePage.Trim().ToUpper()))
+                    {
+                        roleIds.Add(dr["RoleId"].ToString().Trim());
+                    }
+                }
+                if (roleIds.Contains(RoleId.Trim()))
+                {
+                    authorised = true;
+                }
             }
-            else if (FileUpload1.FileName.Trim().Equals(""))
+            return authorised;
+        }
+        private string GetCurrentPage()
+        {
+            string sPath = System.Web.HttpContext.Current.Request.Url.AbsolutePath;
+            System.IO.FileInfo oInfo = new System.IO.FileInfo(sPath);
+            string sRet = oInfo.Name;
+            return sRet;
+        }
+        private void LoadData()
+        {
+            bll.LoadVendorsToReconcile(cboVendor);
+            bll.LoadHours(ddFromHour);
+            bll.LoadHours(ddToHour);
+        }
+
+        private void ToggleVendor()
+        {
+            string districtcode = Session["DistrictCode"].ToString();
+            string role = Session["RoleCode"].ToString();
+            if (role.Equals("005"))
             {
-                ShowMessage("Please Browse for File to Reconcile".ToUpper(), true);
+                cboVendor.Enabled = false;
+                cboVendor.SelectedIndex = cboVendor.Items.IndexOf(cboVendor.Items.FindByValue(districtcode));
             }
             else
             {
-                ReadFileToRecon(vendorcode);
+                cboVendor.Enabled = true;
             }
         }
-        catch (Exception ex)
+
+        private void ShowMessage(string Message, bool Error)
         {
-            ShowMessage(ex.Message, true);
-        }
-    }
-    private int CreateReconCode()
-    {
-        int output = 0;
-        string createdby = Session["Username"].ToString();
-        output = datapay.SaveReconBatch(0, 0, 0, 0, createdby);
-        return output;
-    }
-    private void ReadFileToRecon(string vendorcode)
-    {
-        string fromDate = DateTime.Parse(txtFromDate.Text).ToString();
-        string toDate = DateTime.Parse(txtToDate.Text).AddDays(1).AddSeconds(-1).ToString();
-        bool ReconFromArch = chkboxArchieves.Checked;
-        string filename = Path.GetFileName(FileUpload1.FileName);
-        string extension = Path.GetExtension(filename);
-
-        if (String.IsNullOrEmpty(fromDate))
-        {
-            ShowMessage("Please Select a From Date".ToUpper(), true);
-            return;
-        }
-
-        if (String.IsNullOrEmpty(toDate))
-        {
-            ShowMessage("Please Select a To Date".ToUpper(), true);
-            return;
-        }
-
-        if (!(extension.ToUpper().Equals(".CSV") || extension.ToUpper().Equals(".TXT")))
-        {
-            ShowMessage("Please upload a CSV File, " + extension + " file not supported", true);
-            return;
-        }
-
-        fromDate = GetDate(fromDate, ddFromHour.SelectedValue, false);
-        toDate = GetDate(toDate, ddToHour.SelectedValue, true);
-
-
-        string filePath = bll.BackReconFilePath(vendorcode, filename);
-        FileUpload1.SaveAs(filePath);
-        vendorReconfile = filePath;
-        string resp = FileFormatIsOk(vendorReconfile, vendorcode);
-        string name = Session["FullName"].ToString();
-        if (resp.ToUpper().Trim().Equals("SUCCESS"))
-        {
-            string sessionEmail = Session["UserEmail"].ToString();
-            //string name = Session["FullName"].ToString();
-            string user = Session["Username"].ToString();
-
-            //if (ReconFromArch)
-            //{
-            //    datafile.SaveStatementPathOfArchieves(vendorcode, ova, vendorReconfile,
-            //    fromDate, toDate, user, sessionEmail);
-            //    ShowMessage("Hello\t" + name + "\t\tTelecom File has been Uploaded Successfully Reconciliation has will start and the report will be sent to your Email Shortly", false);
-            //    return;
-            //}
-            datafile.SaveVendorStatementPath(vendorcode, vendorReconfile,
-                fromDate, toDate, user, sessionEmail);
-
-
-
-            ShowMessage("Hello\t" + name + "\t\tVendor File has been Uploaded Successfully Reconciliation will start and the report will be sent to your Email Shortly", false);
-        }
-        else
-        {
-            ShowMessage("Hello\t" + name + "\t\t" + resp, true);
-        }
-    }
-
-    private string FileFormatIsOk(string vendorReconfile, string vendorCode)
-    {
-        string resp = "ERROR";
-        string error = "THE UPLOADED FILE IS NOT IN THE CORRECT FORMAT. ENSURE CORRECT FORMAT. ALSO ENSURE FILE HAS NO BLANK ROWS, ESPECIALLY AT THE BEGINNING OR THE END OF THE FILE.";
-        try
-        {
-            //String[] languages = new String[] { "english", "french", "german" };
-            string firstLine;
-            using (StreamReader reader = new StreamReader(vendorReconfile))
+            Label lblmsg = (Label)Master.FindControl("lblmsg");
+            if (Error) { lblmsg.ForeColor = System.Drawing.Color.Red; lblmsg.Font.Bold = true; }
+            else { lblmsg.ForeColor = System.Drawing.Color.Green; lblmsg.Font.Bold = true; }
+            if (Message == ".")
             {
-                firstLine = reader.ReadLine() ?? "";
-                if (firstLine.Contains(","))
+                lblmsg.Text = ".";
+            }
+            else
+            {
+                lblmsg.Text = "MESSAGE: " + Message.ToUpper();
+            }
+        }
+        private void DisableBtnsOnClick()
+        {
+            string strProcessScript = "this.value='Working...';this.disabled=true;";
+            //btnOK.Attributes.Add("onclick", strProcessScript + ClientScript.GetPostBackEventReference(btnOK, "").ToString());
+            Button1.Attributes.Add("onclick", strProcessScript + ClientScript.GetPostBackEventReference(Button1, "").ToString());
+            Button2.Attributes.Add("onclick", strProcessScript + ClientScript.GetPostBackEventReference(Button2, "").ToString());
+        }
+        protected void cboTelecom_DataBound(object sender, EventArgs e)
+        {
+            cboVendor.Items.Insert(0, new ListItem("Select", "0"));
+        }
+        protected void btnOK_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string vendorcode = cboVendor.SelectedValue.ToString();
+                if (vendorcode.Equals("0"))
                 {
-                    string[] values = firstLine.Split(',');
-                    if (values.Length == 4)
+                    ShowMessage("Please Select Vendor to Reconcile".ToUpper(), true);
+                }
+                else if (FileUpload1.FileName.Trim().Equals(""))
+                {
+                    ShowMessage("Please Browse for File to Reconcile".ToUpper(), true);
+                }
+                else
+                {
+                    ReadFileToRecon(vendorcode);
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowMessage(ex.Message, true);
+            }
+        }
+        private int CreateReconCode()
+        {
+            int output = 0;
+            string createdby = Session["Username"].ToString();
+            output = datapay.SaveReconBatch(0, 0, 0, 0, createdby);
+            return output;
+        }
+        private void ReadFileToRecon(string vendorcode)
+        {
+            string fromDate = DateTime.Parse(txtFromDate.Text).ToString();
+            string toDate = DateTime.Parse(txtToDate.Text).AddDays(1).AddSeconds(-1).ToString();
+            bool ReconFromArch = chkboxArchieves.Checked;
+            string filename = Path.GetFileName(FileUpload1.FileName);
+            string extension = Path.GetExtension(filename);
+
+            if (String.IsNullOrEmpty(fromDate))
+            {
+                ShowMessage("Please Select a From Date".ToUpper(), true);
+                return;
+            }
+
+            if (String.IsNullOrEmpty(toDate))
+            {
+                ShowMessage("Please Select a To Date".ToUpper(), true);
+                return;
+            }
+
+            if (!(extension.ToUpper().Equals(".CSV") || extension.ToUpper().Equals(".TXT")))
+            {
+                ShowMessage("Please upload a CSV File, " + extension + " file not supported", true);
+                return;
+            }
+
+            fromDate = GetDate(fromDate, ddFromHour.SelectedValue, false);
+            toDate = GetDate(toDate, ddToHour.SelectedValue, true);
+
+
+            string filePath = bll.BackReconFilePath(vendorcode, filename);
+            FileUpload1.SaveAs(filePath);
+            vendorReconfile = filePath;
+            string resp = FileFormatIsOk(vendorReconfile, vendorcode);
+            string name = Session["FullName"].ToString();
+            if (resp.ToUpper().Trim().Equals("SUCCESS"))
+            {
+                string sessionEmail = Session["UserEmail"].ToString();
+                //string name = Session["FullName"].ToString();
+                string user = Session["Username"].ToString();
+
+                //if (ReconFromArch)
+                //{
+                //    datafile.SaveStatementPathOfArchieves(vendorcode, ova, vendorReconfile,
+                //    fromDate, toDate, user, sessionEmail);
+                //    ShowMessage("Hello\t" + name + "\t\tTelecom File has been Uploaded Successfully Reconciliation has will start and the report will be sent to your Email Shortly", false);
+                //    return;
+                //}
+                datafile.SaveVendorStatementPath(vendorcode, vendorReconfile,
+                    fromDate, toDate, user, sessionEmail);
+
+
+
+                ShowMessage("Hello\t" + name + "\t\tVendor File has been Uploaded Successfully Reconciliation will start and the report will be sent to your Email Shortly", false);
+            }
+            else
+            {
+                ShowMessage("Hello\t" + name + "\t\t" + resp, true);
+            }
+        }
+
+        private string FileFormatIsOk(string vendorReconfile, string vendorCode)
+        {
+            string resp = "ERROR";
+            string error = "THE UPLOADED FILE IS NOT IN THE CORRECT FORMAT. ENSURE CORRECT FORMAT. ALSO ENSURE FILE HAS NO BLANK ROWS, ESPECIALLY AT THE BEGINNING OR THE END OF THE FILE.";
+            try
+            {
+                //String[] languages = new String[] { "english", "french", "german" };
+                string firstLine;
+                using (StreamReader reader = new StreamReader(vendorReconfile))
+                {
+                    firstLine = reader.ReadLine() ?? "";
+                    if (firstLine.Contains(","))
                     {
-                        string vendor = values[0].ToString();
-                        if (vendor.Trim().ToUpper().Equals(vendorCode.Trim().ToUpper()))
+                        string[] values = firstLine.Split(',');
+                        if (values.Length == 4)
                         {
-                            resp = "SUCCESS";
+                            string vendor = values[0].ToString();
+                            if (vendor.Trim().ToUpper().Equals(vendorCode.Trim().ToUpper()))
+                            {
+                                resp = "SUCCESS";
+                            }
+                            else
+                            {
+                                resp = "THE UPLOADED FILE DOESN'T BELONG TO THE SELECTED VENDOR. THE FILE BELONGS TO ACCOUNT: " + vendorCode + ". PLEASE SELECT THE CORRECT VENDOR";
+                            }
                         }
                         else
                         {
-                            resp = "THE UPLOADED FILE DOESN'T BELONG TO THE SELECTED VENDOR. THE FILE BELONGS TO ACCOUNT: " + vendorCode + ". PLEASE SELECT THE CORRECT VENDOR";
+                            resp = error;
                         }
                     }
                     else
@@ -269,240 +275,236 @@ public partial class BackAutoReconciliation : System.Web.UI.Page
                         resp = error;
                     }
                 }
-                else
-                {
-                    resp = error;
-                }
             }
-        }
-        catch (Exception ex)
-        {
-            resp = ex.Message;
-        }
-        return resp;
-    }
-
-    private string GetDate(string dateString, string hour, bool end)
-    {
-        DateTime date = DateTime.Parse(dateString);
-        int dateHour = Int32.Parse(hour);
-
-        int minutes = end ? 59 : 0;
-        int seconds = end ? 59 : 0;
-
-        DateTime returnDate = new DateTime(date.Year, date.Month, date.Day, dateHour, minutes, seconds);
-        return returnDate.ToString();
-    }
-
-    private string GetPayDate(string pay_date)
-    {
-        string res = "";
-        try
-        {
-            string[] str_date = pay_date.Split('/');
-            if (str_date.Length.Equals(3))
+            catch (Exception ex)
             {
-                string dd = str_date[0].ToString();
-                string mm = str_date[1].ToString();
-                string yy = str_date[2].ToString();
-                int dd_len = dd.Length;
-                int mm_len = mm.Length;
-                int yy_len = yy.Length;
-                if (dd_len.Equals(1))
-                {
-                    dd = "0" + dd;
-                    dd_len = dd.Length;
-                }
-                if (mm_len.Equals(1))
-                {
-                    mm = "0" + mm;
-                    mm_len = mm.Length;
-                }
+                resp = ex.Message;
+            }
+            return resp;
+        }
 
-                if (dd_len.Equals(2) && mm_len.Equals(2) && yy_len.Equals(4))
+        private string GetDate(string dateString, string hour, bool end)
+        {
+            DateTime date = DateTime.Parse(dateString);
+            int dateHour = Int32.Parse(hour);
+
+            int minutes = end ? 59 : 0;
+            int seconds = end ? 59 : 0;
+
+            DateTime returnDate = new DateTime(date.Year, date.Month, date.Day, dateHour, minutes, seconds);
+            return returnDate.ToString();
+        }
+
+        private string GetPayDate(string pay_date)
+        {
+            string res = "";
+            try
+            {
+                string[] str_date = pay_date.Split('/');
+                if (str_date.Length.Equals(3))
                 {
-                    res = dd + "/" + mm + "/" + yy;
+                    string dd = str_date[0].ToString();
+                    string mm = str_date[1].ToString();
+                    string yy = str_date[2].ToString();
+                    int dd_len = dd.Length;
+                    int mm_len = mm.Length;
+                    int yy_len = yy.Length;
+                    if (dd_len.Equals(1))
+                    {
+                        dd = "0" + dd;
+                        dd_len = dd.Length;
+                    }
+                    if (mm_len.Equals(1))
+                    {
+                        mm = "0" + mm;
+                        mm_len = mm.Length;
+                    }
+
+                    if (dd_len.Equals(2) && mm_len.Equals(2) && yy_len.Equals(4))
+                    {
+                        res = dd + "/" + mm + "/" + yy;
+                    }
+                    else
+                    {
+                        throw new Exception("Wrong Payment Date");
+                    }
                 }
                 else
                 {
                     throw new Exception("Wrong Payment Date");
                 }
             }
-            else
+            catch (Exception ex)
             {
                 throw new Exception("Wrong Payment Date");
             }
+            return res;
         }
-        catch (Exception ex)
+        private void DisplayFailed(ArrayList failedTransactions)
         {
-            throw new Exception("Wrong Payment Date");
-        }
-        return res;
-    }
-    private void DisplayFailed(ArrayList failedTransactions)
-    {
-        try
-        {
-            DataTable dt = bll.GetFailedReconTable();
-            Recontran recontran = new Recontran();
-            for (int i = 0; i < failedTransactions.Count; i++)
+            try
             {
-                recontran = (Recontran)failedTransactions[i];
-                DataRow dr = dt.NewRow();
-                dr["No."] = i + 1;
-                dr["VendorRef"] = recontran.VendorRef;
-                dr["PayDate"] = recontran.PayDate;
-                dr["TransactionAmount"] = recontran.TransAmount.ToString("#,##0");
-                dr["Reason"] = recontran.Reason;
-                dt.Rows.Add(dr);
+                DataTable dt = bll.GetFailedReconTable();
+                Recontran recontran = new Recontran();
+                for (int i = 0; i < failedTransactions.Count; i++)
+                {
+                    recontran = (Recontran)failedTransactions[i];
+                    DataRow dr = dt.NewRow();
+                    dr["No."] = i + 1;
+                    dr["VendorRef"] = recontran.VendorRef;
+                    dr["PayDate"] = recontran.PayDate;
+                    dr["TransactionAmount"] = recontran.TransAmount.ToString("#,##0");
+                    dr["Reason"] = recontran.Reason;
+                    dt.Rows.Add(dr);
 
-                dt.AcceptChanges();
+                    dt.AcceptChanges();
+                }
+                LoadFailedGrid(dt);
             }
-            LoadFailedGrid(dt);
-        }
-        catch (Exception ex)
-        {
-            ShowMessage(ex.Message, true);
-        }
-    }
-    private void LoadFailedGrid(DataTable dt)
-    {
-        MultiView1.ActiveViewIndex = 1;
-        DataGrid1.DataSource = dt;
-        DataGrid1.DataBind();
-        //string filePath = CallFilling(dt);
-        //foreach (DataRow dr in dac.GetEmailSubscribers().Rows)
-        //{
-        //    string Email = dr["Email"].ToString();
-        //    string FName = dr["FullName"].ToString();
-        //    string Msg = "Hello " + " " + FName + "\nPlease find attached, \n Failed Reconciliations for Vendor : " + cboBank.SelectedItem.ToString();
-        //    string Subject = "Failed Reconciliations for Vendor: " + cboBank.SelectedItem.ToString();
-        //    string Sender = Session["UserName"].ToString();
-        //    bll.SendMail(Email, Msg, Sender, Subject, filePath);
-        //}     
-    }
-
-    private void CancelRecnBatch(int Reconcode)
-    {
-        datapay.CancelReconBatch(Reconcode);
-    }
-    protected void Button1_Click(object sender, EventArgs e)
-    {
-        MultiView1.ActiveViewIndex = 0;
-        ShowMessage(".", true);
-    }
-    protected void Button3_Click(object sender, EventArgs e)
-    {
-        try
-        {
-            string fileFormat = GetFileformat();
-            if (fileFormat.Equals("NONE"))
+            catch (Exception ex)
             {
-                ShowMessage("Please Select File Format", true);
-            }
-            else
-            {
-                ShowMessage(".", true);
-                ConvertToPdf(fileFormat);
+                ShowMessage(ex.Message, true);
             }
         }
-        catch (Exception ex)
+        private void LoadFailedGrid(DataTable dt)
         {
-            ShowMessage(ex.Message, true);
+            MultiView1.ActiveViewIndex = 1;
+            DataGrid1.DataSource = dt;
+            DataGrid1.DataBind();
+            //string filePath = CallFilling(dt);
+            //foreach (DataRow dr in dac.GetEmailSubscribers().Rows)
+            //{
+            //    string Email = dr["Email"].ToString();
+            //    string FName = dr["FullName"].ToString();
+            //    string Msg = "Hello " + " " + FName + "\nPlease find attached, \n Failed Reconciliations for Vendor : " + cboBank.SelectedItem.ToString();
+            //    string Subject = "Failed Reconciliations for Vendor: " + cboBank.SelectedItem.ToString();
+            //    string Sender = Session["UserName"].ToString();
+            //    bll.SendMail(Email, Msg, Sender, Subject, filePath);
+            //}     
         }
-        finally
-        {
-            Rptdoc.Dispose();
-        }
-    }
 
-    private string GetFileformat()
-    {
-        string res = "NONE";
-        if (rdPdf.Checked == false && rdExcel.Checked == false)
+        private void CancelRecnBatch(int Reconcode)
         {
-            res = "NONE";
+            datapay.CancelReconBatch(Reconcode);
         }
-        else
+        protected void Button1_Click(object sender, EventArgs e)
         {
-            if (rdPdf.Checked == true)
+            MultiView1.ActiveViewIndex = 0;
+            ShowMessage(".", true);
+        }
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            try
             {
-                res = "1";
+                string fileFormat = GetFileformat();
+                if (fileFormat.Equals("NONE"))
+                {
+                    ShowMessage("Please Select File Format", true);
+                }
+                else
+                {
+                    ShowMessage(".", true);
+                    ConvertToPdf(fileFormat);
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowMessage(ex.Message, true);
+            }
+            finally
+            {
+                Rptdoc.Dispose();
+            }
+        }
+
+        private string GetFileformat()
+        {
+            string res = "NONE";
+            if (rdPdf.Checked == false && rdExcel.Checked == false)
+            {
+                res = "NONE";
             }
             else
             {
-                res = "2";
+                if (rdPdf.Checked == true)
+                {
+                    res = "1";
+                }
+                else
+                {
+                    res = "2";
+                }
             }
+            return res;
         }
-        return res;
-    }
 
-    private void ConvertToPdf(string fileformat)
-    {
-        dataTable = GetGridRptTable();
-        LoadReport(dataTable, fileformat);
-    }
-    private DataTable GetGridRptTable()
-    {
-        DataTable dtble = GetFailedRptDataTable();
-        string vendor = cboVendor.SelectedItem.ToString();
-        foreach (DataGridItem Items in DataGrid1.Items)
+        private void ConvertToPdf(string fileformat)
         {
-            DataRow dr = dtble.NewRow();
-            string No = Items.Cells[0].Text;
-            string VendorRef = Items.Cells[1].Text;
-            string PayDate = Items.Cells[2].Text;
-            string Amount = Items.Cells[3].Text;
-            string Reason = Items.Cells[4].Text;
-            string bank = vendor;
-            string PrintedBy = Session["FullName"].ToString();
-            ///////
-            dr["No."] = No;
-            dr["VendorRef"] = VendorRef;
-            dr["PayDate"] = PayDate;
-            dr["Amount"] = Amount;
-            dr["Reason"] = Reason;
-            dr["Bank"] = bank;
-            dr["PrintedBy"] = PrintedBy;
-            dtble.Rows.Add(dr);
-            dtble.AcceptChanges();
+            dataTable = GetGridRptTable();
+            LoadReport(dataTable, fileformat);
         }
-        return dtble;
-    }
+        private DataTable GetGridRptTable()
+        {
+            DataTable dtble = GetFailedRptDataTable();
+            string vendor = cboVendor.SelectedItem.ToString();
+            foreach (DataGridItem Items in DataGrid1.Items)
+            {
+                DataRow dr = dtble.NewRow();
+                string No = Items.Cells[0].Text;
+                string VendorRef = Items.Cells[1].Text;
+                string PayDate = Items.Cells[2].Text;
+                string Amount = Items.Cells[3].Text;
+                string Reason = Items.Cells[4].Text;
+                string bank = vendor;
+                string PrintedBy = Session["FullName"].ToString();
+                ///////
+                dr["No."] = No;
+                dr["VendorRef"] = VendorRef;
+                dr["PayDate"] = PayDate;
+                dr["Amount"] = Amount;
+                dr["Reason"] = Reason;
+                dr["Bank"] = bank;
+                dr["PrintedBy"] = PrintedBy;
+                dtble.Rows.Add(dr);
+                dtble.AcceptChanges();
+            }
+            return dtble;
+        }
 
-    private DataTable GetFailedRptDataTable()
-    {
-        DataTable dt = new DataTable("Table2");
-        dt.Columns.Add("No.");
-        dt.Columns.Add("VendorRef");
-        dt.Columns.Add("PayDate");
-        dt.Columns.Add("Amount");
-        dt.Columns.Add("Reason");
-        dt.Columns.Add("Bank");
-        dt.Columns.Add("PrintedBy");
-        return dt;
-    }
+        private DataTable GetFailedRptDataTable()
+        {
+            DataTable dt = new DataTable("Table2");
+            dt.Columns.Add("No.");
+            dt.Columns.Add("VendorRef");
+            dt.Columns.Add("PayDate");
+            dt.Columns.Add("Amount");
+            dt.Columns.Add("Reason");
+            dt.Columns.Add("Bank");
+            dt.Columns.Add("PrintedBy");
+            return dt;
+        }
 
-    private void LoadReport(DataTable dataTable, string fileformat)
-    {
-        string appPath, physicalPath, rptName;
-        appPath = HttpContext.Current.Request.ApplicationPath;
-        physicalPath = HttpContext.Current.Request.MapPath(appPath);
-        rptName = physicalPath + "\\Bin\\reports\\FailedRecon.rpt";
-        Rptdoc.Load(rptName);
-        Rptdoc.SetDataSource(dataTable);
-        CrystalReportViewer1.ReportSource = Rptdoc;
-        Response.Buffer = false;
-        Response.ClearContent();
-        Response.ClearHeaders();
-        if (fileformat.Equals("1"))
+        private void LoadReport(DataTable dataTable, string fileformat)
         {
-            Rptdoc.ExportToHttpResponse(ExportFormatType.PortableDocFormat, Response, true, "FAILED RECONCILIATIONS");
+            string appPath, physicalPath, rptName;
+            appPath = HttpContext.Current.Request.ApplicationPath;
+            physicalPath = HttpContext.Current.Request.MapPath(appPath);
+            rptName = physicalPath + "\\Bin\\reports\\FailedRecon.rpt";
+            Rptdoc.Load(rptName);
+            Rptdoc.SetDataSource(dataTable);
+            CrystalReportViewer1.ReportSource = Rptdoc;
+            Response.Buffer = false;
+            Response.ClearContent();
+            Response.ClearHeaders();
+            if (fileformat.Equals("1"))
+            {
+                Rptdoc.ExportToHttpResponse(ExportFormatType.PortableDocFormat, Response, true, "FAILED RECONCILIATIONS");
+            }
+            else
+            {
+                Rptdoc.ExportToHttpResponse(ExportFormatType.Excel, Response, true, "FAILED RECONCILIATIONS");
+            }
+            ShowMessage(".", true);
         }
-        else
-        {
-            Rptdoc.ExportToHttpResponse(ExportFormatType.Excel, Response, true, "FAILED RECONCILIATIONS");
-        }
-        ShowMessage(".", true);
     }
 }

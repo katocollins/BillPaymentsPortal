@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/AccountBatch.master" AutoEventWireup="true" CodeFile="BatchPayments.aspx.cs" Inherits="BatchPayments" Title="BATCH PAYMENTS" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/AccountBatch.master" AutoEventWireup="true" CodeFile="BatchPayments.aspx.cs" Inherits="BatchPayments" Title="BATCH PAYMENTS" %>
 <%@ Register 
  Assembly="AjaxControlToolkit" 
  Namespace="AjaxControlToolkit" 

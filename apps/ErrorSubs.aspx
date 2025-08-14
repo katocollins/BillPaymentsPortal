@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="ErrorSubs.aspx.cs" Inherits="ErrorSubs" Title="ALERT SUBSRCIBERS" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="ErrorSubs.aspx.cs" Inherits="ErrorSubs" Title="ALERT SUBSRCIBERS" %>
 <%@ Register Assembly="CrystalDecisions.Web, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304"
     Namespace="CrystalDecisions.Web" TagPrefix="CR" %>
  <%@ Register 
@@ -216,7 +216,7 @@
 
     }
 
-</script>
+    </script>
 
     <asp:Label ID="lblcode" runat="server" Text="0" Visible="False"></asp:Label>
 </asp:Content>

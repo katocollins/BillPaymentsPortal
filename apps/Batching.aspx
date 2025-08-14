@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/AccountBatch.master" AutoEventWireup="true" CodeFile="Batching.aspx.cs" Inherits="Batching" Title="BATCHING"
+﻿<%@ Page Language="C#" MasterPageFile="~/AccountBatch.master" AutoEventWireup="true" CodeFile="Batching.aspx.cs" Inherits="Batching" Title="BATCHING"
  %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <table style="width: 100%">

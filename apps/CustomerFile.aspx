@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/ReportMaster.master" AutoEventWireup="true" CodeFile="CustomerFile.aspx.cs" Inherits="CustomerFile" Title="CUSTOMER FILE" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/ReportMaster.master" AutoEventWireup="true" CodeFile="CustomerFile.aspx.cs" Inherits="CustomerFile" Title="CUSTOMER FILE" %>
 
 <%@ Register Assembly="CrystalDecisions.Web, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304"
     Namespace="CrystalDecisions.Web" TagPrefix="CR" %>

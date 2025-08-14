@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/AccountantMaster.master" AutoEventWireup="true" CodeFile="CreditAccount.aspx.cs" Inherits="CreditAccount" Title="ACCOUNTS" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/AccountantMaster.master" AutoEventWireup="true" CodeFile="CreditAccount.aspx.cs" Inherits="CreditAccount" Title="ACCOUNTS" %>
 <%@ Register 
  Assembly="AjaxControlToolkit" 
  Namespace="AjaxControlToolkit" 
@@ -267,7 +267,7 @@
        return x1 + x2;
  } 
     
-   </script> 
+        </script> 
 </asp:Content>
 
 

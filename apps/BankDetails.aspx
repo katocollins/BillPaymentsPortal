@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="BankDetails.aspx.cs" 
+﻿<%@ Page Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="BankDetails.aspx.cs" 
 Inherits="BankDetails" 
 Title="BANK DETAILS"
 
