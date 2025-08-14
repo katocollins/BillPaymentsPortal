@@ -1,0 +1,17 @@
+Serialno	String	30	
+CustomerName	String	70	
+Amount	Currency		
+VatAmount	Currency		
+phone	String	30	
+email	String	100	
+PaymentType	String	50	
+PostDate	Date		
+Issuer	String	50	
+Str1	String	30	
+Str2	String	30	
+Date1	Date		
+Date2	Date		
+Amount1	Currency		
+Amount2	Currency		
+Number1	Number		
+Number2	Number		

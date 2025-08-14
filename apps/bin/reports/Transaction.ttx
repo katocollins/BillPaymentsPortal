@@ -1,0 +1,23 @@
+VendorTranId	String	50	
+CustomerRef	String	30	
+CustomerName	String	80	
+Amount	Currency		
+PayDate	Date		
+PostDate	Date		
+TranType	String	15	
+PaymentType	String	30	
+Teller	String	30	
+Vendor	String	30	
+DateRange	String	30	
+PrintedBy	String	50	
+TranId	Number		
+ReconciledBy	String	30	
+Date1	Date		
+Date2	Date		
+Str1	String	30	
+Str2	String	30	
+Amount1	Currency		
+Amount2	Currency		
+Number1	Number		
+Number2	Number		
+UtilityCode	String	10

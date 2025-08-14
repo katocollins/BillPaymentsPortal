@@ -1,0 +1,18 @@
+RecieptNo	String	30	
+VendorRef	String	50	
+Custref	String	30	
+Custname	String	100	
+Createdby	String	70	
+Paymentmode	String	20	
+PaymentDate	Date		
+Title	String	30	
+Balance	Currency		
+Amount	Currency		
+NewBal	Currency		
+Amount1	Currency		
+Amount2	Currency		
+PayDate	Date		
+Number1	Number		
+Str1	String	30	
+Str2	String	30	
+District	String	30	

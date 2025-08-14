@@ -1,0 +1,443 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="ReportMaster.master.cs"
+    Inherits="ReportMaster" %>
+
+<%@ Import Namespace="System.Data" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>REPORTS</title>
+    <link href="scripts/WQC_stylesheet.css" rel="stylesheet" type="text/css" />
+    <link href="scripts/globalscape.css" rel="stylesheet" type="text/css" />
+    <link href="scripts/custom.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .auto-style1 {
+            width: 20%;
+            padding: 3px 10px 0px 0px;
+            font-family: Tahoma;
+            font-weight: normal;
+            font-size: 10pt;
+            text-align: right;
+            text-decoration: none;
+            height: 19px;
+        }
+
+        .auto-style2 {
+            width: 15%;
+            padding: 3px 10px 0px 0px;
+            font-family: Tahoma;
+            font-weight: normal;
+            font-size: 10pt;
+            text-align: right;
+            text-decoration: none;
+            height: 19px;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <table border="0" cellpadding="0" cellspacing="0" style="width: 100%; height: 100%">
+                <tr>
+                    <td style="height: 1px">
+                        <table style="width: 100%">
+                            <tr>
+                                <td class="InterFaceTableLeftRowUp" style="width: 90%; height: 2px; text-align: left">&nbsp;<img alt="" src="Images/Billing.png" style="width: 518px; height: 44px" /></td>
+                                <td style="width: 10%; text-align: center" class="InterFaceTableLeftRowUp">
+                                    <asp:LinkButton ID="LinkButton1" runat="server" Font-Bold="True" Font-Names="Arial Narrow"
+                                        OnClick="LinkButton1_Click">Sign out</asp:LinkButton></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 100%; height: 1px; background-color: #990033;"></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align: top; height: 200px; text-align: center">
+                        <table border="0" cellpadding="0" cellspacing="0" style="width: 100%; height: 100%">
+                            <tr>
+                                <td style="width: 12%"></td>
+                                <td style="width: 1%"></td>
+                                <td style="width: 88%; height: 1px; text-align: justify; border-bottom-style: ridge; vertical-align: bottom;">
+                                    <table class="InterFaceTableLeftLight" style="border-right: #617da6 1px solid; border-top: #617da6 1px solid; visibility: visible; font: menu; border-left: #617da6 1px solid; width: 100%; border-bottom: #617da6 1px solid">
+                                        <tr>
+                                            <td style="border-right: #617da6 1px solid; border-top: #617da6 1px solid; font-weight: bold; border-left: #617da6 1px solid; width: 8%; border-bottom: #617da6 1px solid">User ID :
+                                                <asp:Label ID="lblUserId" runat="server" Text="."></asp:Label></td>
+                                            <td style="border-right: #617da6 1px solid; border-top: #617da6 1px solid; font-weight: bold; border-left: #617da6 1px solid; width: 10%; border-bottom: #617da6 1px solid">User Type :
+                                                <asp:Label ID="lblRole" runat="server" Text="."></asp:Label></td>
+                                            <td style="border-right: #617da6 1px solid; border-top: #617da6 1px solid; font-weight: bold; border-left: #617da6 1px solid; width: 8%; border-bottom: #617da6 1px solid">Area :
+                                                <asp:Label ID="lblArea" runat="server" Text="."></asp:Label></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 12%"></td>
+                                <td style="width: 1%"></td>
+                                <td style="width: 88%; height: 5px">
+                                    <table id="TABLE1" align="left" cellpadding="0" cellspacing="0" onclick="return TABLE1_onclick()"
+                                        style="font: menu; width: 98%">
+                                        <tr>
+                                            <td class="auto-style1" style="vertical-align: middle; text-align: left">
+                                                <a href="TransactionsNew.aspx" style="font: menu; text-transform: uppercase; color: blue">TRANSACTION REPORT</a></td>
+                                            <%if ((Session["UserBranch"].ToString().Equals("PegPay")) && (Session["RoleCode"].ToString() == "007"))
+                                                {%>
+                                            <td class="auto-style1" style="font: menu; vertical-align: middle; text-align: left">
+                                                <a href="CommissionTransactionReport.aspx" style="font: menu; text-transform: uppercase; color: blue">COMMISSION TXN REPORT</a></td>
+                                            <%} %>
+                                            <%if (!(Session["UserBranch"].ToString().Equals("UTL")))
+                                                {%>
+                                            <td class="auto-style1" style="font: menu; vertical-align: middle; text-align: left">
+                                                <a href="Customerfile.aspx" style="font: menu; text-transform: uppercase; color: blue">CUSTOMER FILE</a></td>
+                                            <%} %>
+                                            <% if (string.IsNullOrEmpty(Session["VendorType"].ToString()) || Session["VendorType"].ToString() == "POSTPAID")
+                                                {%>
+                                            <%if (!(Session["UserBranch"].ToString().Equals("AIRTELMONEY")))
+                                                {%>
+                                            <td class="auto-style2" style="font: menu; vertical-align: middle; text-transform: uppercase; color: blue; text-align: left">
+                                                <a href="Transactions.aspx" style="font: menu; text-transform: uppercase; color: blue; width: 20%;">ALL TRANSACTIONS</a></td>
+                                            <%if ((Session["RoleCode"].ToString() == "001"))
+                                                { %>
+                                            <td class="auto-style2" style="font: menu; vertical-align: middle; text-transform: uppercase; color: blue; text-align: left">
+                                                <a href="FailedTransactions.aspx" style="font: menu; text-transform: uppercase; color: blue; width: 20%;">PENDING TRANSACTIONS</a></td>
+                                            <%} %>
+                                            <%} %>
+                                            <%} %>
+                                            <% if (Session["VendorType"].ToString() == "PREPAID")
+                                                {%>
+                                            <td class="auto-style2" style="font: menu; vertical-align: middle; text-transform: uppercase; color: blue; text-align: left">
+                                                <a href="TransactionsForPrepaidVendors.aspx" style="font: menu; text-transform: uppercase; color: blue; width: 20%;">ALL TRANSACTIONS</a></td>
+                                            <%} %>
+                                            <%if (((Session["AreaID"].ToString().Equals("2")) && (Session["RoleCode"].ToString() == "002")) || (Session["RoleCode"].ToString() == "007"))
+                                                {%>
+                                            <td class="auto-style2" style="font: menu; vertical-align: middle; text-transform: uppercase; color: blue; text-align: left">
+                                                <a href="MonthlyTransactionsReport.aspx" style="font: menu; text-transform: uppercase; color: blue">MONTHLY TRANSACTIONS REPORT</a></td>
+                                            <%} %>
+                                            <%if ((Session["RoleCode"].ToString() == "001") && Session["AreaID"].ToString().Equals("1"))
+                                                {%>
+                                            <td class="auto-style2" style="font: menu; vertical-align: middle; text-transform: uppercase; color: blue; text-align: left">
+                                                <a href="ResendTransaction.aspx" style="font: menu; text-transform: uppercase; color: blue">RESEND TRANSACTION(S)</a></td>
+                                            <td class="auto-style2" style="font: menu; vertical-align: middle; text-transform: uppercase; color: blue; text-align: left">
+                                                <a href="UpdateCustomerReference.aspx" style="font: menu; text-transform: uppercase; color: blue">Update CustomerRef</a></td>
+                                            <td class="auto-style2" style="font: menu; vertical-align: middle; text-transform: uppercase; color: blue; text-align: left">
+                                                <a href="MTNTransactionTrace.aspx" style="font: menu; text-transform: uppercase; color: blue">MTN Transaction Logs</a></td>
+                                            <%} %>
+                                            <%if (Session["UserBranch"].ToString().Equals("MTN") || Session["UserBranch"].ToString().Equals("UTL") || Session["UserBranch"].ToString().Equals("PegPay"))
+                                                {%>
+                                            <td class="auto-style2" style="font: menu; vertical-align: middle; text-transform: uppercase; color: blue; text-align: left">
+                                                <a href="InternetworkTransactions.aspx" style="font: menu; text-transform: uppercase; color: blue">INTERNETWORK TRANSACTIONS</a></td>
+                                            <%} %>
+
+                                            <%if (Session["RoleCode"].ToString().Equals("001") || Session["UserBranch"].ToString().Equals("REA") || Session["UserBranch"].ToString().Equals("KIL"))
+                                                {%>
+                                            <td class="auto-style2" style="font: menu; vertical-align: middle; text-transform: uppercase; color: blue; text-align: left">
+                                                <a href="FailedErrorLogs.aspx" style="font: menu; text-transform: uppercase; color: blue">FAILED LOGS</a></td>
+
+                                            <%} %>
+                                            <%if ((Session["RoleCode"].ToString().Equals("001") && Session["UserBranch"].ToString().Equals("PegPay")))
+                                                {%>
+                                            <%--<td class="auto-style2" style="font: menu; vertical-align: middle; text-transform: uppercase; color: blue; text-align: left">
+                                                <a href="RetryUssdTransactionsInFailedLogs.aspx" style="font: menu; text-transform: uppercase; color: blue">RETRY TXNS FROM USSD</a></td>--%>
+
+                                            <%--<td class="auto-style2" style="font: menu; vertical-align: middle; text-transform: uppercase; color: blue; text-align: left">
+                                                <a href="FailTransactionandReverse.aspx" style="font: menu; text-transform: uppercase; color: blue">FAIL AND REVERSE TRANSACTION</a></td>--%>
+                                            <td class="auto-style2" style="font: menu; vertical-align: middle; text-transform: uppercase; color: blue; text-align: left">
+                                                <a href="MakeFortebetPayment.aspx" style="font: menu; text-transform: uppercase; color: blue">PROCESS FORTEBET FILE</a></td>
+
+                                            <td class="auto-style2" style="font: menu; vertical-align: middle; text-transform: uppercase; color: blue; text-align: left">
+                                                <a href="BoUStats.aspx" style="font: menu; text-transform: uppercase; color: blue">MONTHLY BOU STATISTICS REPORT</a></td>
+
+                                            <td class="auto-style2" style="font: menu; vertical-align: middle; text-transform: uppercase; color: blue; text-align: left">
+                                                <a href="DSTVTransactionStatus.aspx" style="font: menu; text-transform: uppercase; color: blue">CHECK UMEME / DSTV TRANSACTION STATUS (S)</a></td>
+                                            <td class="auto-style2" style="font: menu; vertical-align: middle; text-transform: uppercase; color: blue; text-align: left">
+                                                <a href="NWSCReversals.aspx" style="font: menu; text-transform: uppercase; color: blue">Reverse NWSC Transaction</a></td>
+                                            <%} %>
+                                        </tr>
+                                        <tr>
+                                            <td class="leftnav" colspan="7" style="vertical-align: middle; height: 1px; text-align: left"></td>
+                                        </tr>
+                                        <tr>
+                                            <%if (!(Session["UserBranch"].ToString().Equals("AIRTELMONEY")))
+                                                {%>
+                                            <td class="leftnav" style="font: menu; vertical-align: middle; width: 10%; height: 19px; text-align: left">
+                                                <a href="SystemReports.aspx" style="font: menu; text-transform: uppercase; color: blue; width: 20%;">SYSTEM REPORTS</a></td>
+
+                                            <%if (!(Session["UserBranch"].ToString().Equals("UTL")))
+                                                {%>
+                                            <td class="leftnav" style="font: menu; vertical-align: middle; text-transform: uppercase; width: 15%; color: blue; height: 19px; text-align: left">
+                                                <a href="QueryCustomerDetails.aspx" style="font: menu; text-transform: uppercase; color: blue">CUSTOMER VALIDATION</a></td>
+                                            <%} %>
+                                            <%} %>
+                                            <%if (!(Session["UserBranch"].ToString().Equals("AIRTELMONEY")))
+                                                {%>
+                                            <td class="leftnav" style="font: menu; vertical-align: middle; text-transform: uppercase; width: 15%; color: blue; height: 19px; text-align: left">
+                                                <a href="UtilityErrorsByID.aspx" style="font: menu; text-transform: uppercase; color: blue">UTILITY ERRORS</a></td>
+                                            <%} %>
+                                            <%if (Session["UserBranch"].ToString().Equals("MTN") || Session["UserBranch"].ToString().Equals("PegPay"))
+                                                {%>
+                                            <td class="leftnav" style="font: menu; vertical-align: middle; text-transform: uppercase; width: 15%; color: blue; height: 19px; text-align: left">
+                                                <a href="XtraFloatWhiteList.aspx" style="font: menu; text-transform: uppercase; color: blue">XTRA-FLOAT WHITELIST</a></td>
+                                            <td class="leftnav" style="font: menu; vertical-align: middle; text-transform: uppercase; width: 15%; color: blue; height: 19px; text-align: left">
+                                                <a href="XtraFloatTransactions.aspx" style="font: menu; text-transform: uppercase; color: blue">XTRA-FLOAT TRANSACTIONS</a></td>
+                                            <%--<%if (Session["UserBranch"].ToString().Equals("PegPay"))
+                                                      { %>
+                                                    
+                                                    <%} %>--%>
+
+                                            <%} %>
+                                            <%if ((Session["RoleCode"].ToString() == "007" || Session["RoleCode"].ToString() == "003") && Session["UserBranch"].ToString().Equals("PegPay"))
+                                                {%>
+                                            <td class="leftnav" style="font: menu; vertical-align: middle; text-transform: uppercase; width: 15%; color: blue; height: 19px; text-align: left">
+                                                <a href="AgentCredit.aspx" style="font: menu; text-transform: uppercase; color: blue">AGENT ACCOUNT BALANCE</a>
+                                            </td>
+                                            <td class="leftnav" style="font: menu; vertical-align: middle; text-transform: uppercase; width: 15%; color: blue; height: 19px; text-align: left">
+                                                <a href="FailTransactionandReverse.aspx" style="font: menu; text-transform: uppercase; color: blue">FAIL AND REVERSE TRANSACTION</a>
+                                            </td>
+                                            <%} %>
+
+                                            <%if ((Session["RoleCode"].ToString() == "001") && Session["AreaID"].ToString().Equals("1") || (Session["RoleCode"].ToString() == "003") && Session["AreaID"].ToString().Equals("1"))
+                                                {%>
+                                            <td class="leftnav" style="font: menu; vertical-align: middle; text-transform: uppercase; width: 15%; color: blue; height: 19px; text-align: left">
+                                                <a href="TransactionStatus.aspx" style="font: menu; text-transform: uppercase; color: blue">TRACK STATUS AT BANK</a></td>
+                                            <%if (Session["RoleCode"].ToString() == "001")
+                                                {%>
+                                            <td class="leftnav" style="font: menu; vertical-align: middle; text-transform: uppercase; width: 15%; color: blue; height: 19px; text-align: left">
+                                                <a href="CompletePendingVasTransactions.aspx" style="font: menu; text-transform: uppercase; color: blue">Complete Pending Vas</a></td>
+                                            <%} %>
+                                            <%} %>
+                                            <%if ((Session["RoleCode"].ToString() == "001") && Session["AreaID"].ToString().Equals("1"))
+                                                {%>
+                                            <td class="leftnav" style="font: menu; vertical-align: middle; text-transform: uppercase; width: 15%; color: blue; height: 19px; text-align: left"></td>
+                                            <%} %>
+                                            <% if (lblArea.Text.Trim().Contains("STANBIC VAS") || lblArea.Text.Trim().Contains("COMMERCIAL"))
+                                                {%>
+                                            <td class="leftnav" runat="server" id="vastrans" style="font: menu; vertical-align: middle; text-transform: uppercase; width: 15%; color: blue; height: 19px; text-align: left">
+                                                <a href="VasTransactions.aspx" style="font: menu; text-transform: uppercase; color: blue">VAS TRANSACTIONS </a>
+                                            </td>
+                                            <% }
+                                            %>
+                                            <%if (Session["UserID"].ToString() == "548" || Session["UserID"].ToString() == "666")
+                                                {%>
+                                            <td>
+                                                <a href="ViewPrepaidCharges.aspx" style="font: menu; text-transform: uppercase; color: blue">PREPAID CHARGES</a>
+                                            </td>
+                                            <%} %>
+                                            <%if (Session["UserBranch"].ToString().Equals("DSTV") && (Session["RoleCode"].ToString().Equals("002") || (Session["RoleCode"].ToString().Equals("001"))))
+                                                {%>
+                                            <td>
+                                                <a href="ViewDstvTransactions.aspx" style="font: menu; text-transform: uppercase; color: blue">VIEW DSTV TRANSACTIONS</a>
+                                            </td>
+                                            <%} %>
+                                            <%if (Session["UserBranch"].ToString().Equals("UCAA") && (Session["RoleCode"].ToString().Equals("003") || (Session["RoleCode"].ToString().Equals("002") || (Session["RoleCode"].ToString().Equals("001")))))
+                                                {%>
+                                            <td>
+                                                <a href="ViewCAATransactions.aspx" style="font: menu; text-transform: uppercase; color: blue">VIEW UCAA TRANSACTIONS</a>
+                                            </td>
+                                            <%} %>
+
+                                            <%if (Session["RoleCode"].ToString().Equals("001") && Session["UserBranch"].ToString().Equals("PegPay"))
+                                                {%>
+                                            <td class="leftnav" style="font: menu; vertical-align: middle; text-transform: uppercase; width: 15%; color: blue; height: 19px; text-align: left">
+                                                <a href="AppTransactions.aspx" style="font: menu; text-transform: uppercase; color: blue">APP TRANSACTIONS</a></td>
+                                            <td class="leftnav" style="font: menu; vertical-align: middle; text-transform: uppercase; width: 15%; color: blue; height: 19px; text-align: left">
+                                                <a href="AppErrors.aspx" style="font: menu; text-transform: uppercase; color: blue">APP ERRORS</a></td>
+                                            <td class="leftnav" runat="server" id="Td8" style="font: menu; vertical-align: middle; text-transform: uppercase; width: 15%; color: blue; height: 19px; text-align: left">
+                                                <a href="TransferFailedArchiveToReceived.aspx" style="font: menu; text-transform: uppercase; color: blue">TRANSFER FAILED ARCHIVE TO RECEIVED </a>
+                                            </td>
+                                            <td class="leftnav" runat="server" id="Td1" style="font: menu; vertical-align: middle; text-transform: uppercase; width: 15%; color: blue; height: 19px; text-align: left">
+                                                <a href="UmemeLogs.aspx" style="font: menu; text-transform: uppercase; color: blue">UMEME LOGS</a>
+                                            </td>
+                                            <td class="leftnav" runat="server" id="Td6" style="font: menu; vertical-align: middle; text-transform: uppercase; width: 15%; color: blue; height: 19px; text-align: left">
+                                                <a href="UtilityLogs.aspx" style="font: menu; text-transform: uppercase; color: blue">Utility Logs</a>
+                                            </td>
+                                            <td class="leftnav" runat="server" id="Td4" style="font: menu; vertical-align: middle; text-transform: uppercase; width: 15%; color: blue; height: 19px; text-align: left">
+                                                <a href="UssdLogs.aspx" style="font: menu; text-transform: uppercase; color: blue">USSD LOGS </a>
+                                            </td>
+
+                                            <td class="leftnav" runat="server" id="Td3" style="font: menu; vertical-align: middle; text-transform: uppercase; width: 15%; color: blue; height: 19px; text-align: left">
+                                                <a href="AirtimeLogs.aspx" style="font: menu; text-transform: uppercase; color: blue">AIRTIME LOGS </a>
+                                            </td>
+                                            <td class="leftnav" runat="server" id="Td7" style="font: menu; vertical-align: middle; text-transform: uppercase; width: 15%; color: blue; height: 19px; text-align: left">
+                                                <a href="FailedAirtime.aspx" style="font: menu; text-transform: uppercase; color: blue">RETRY FAILED AIRTIME TRANSACTION </a>
+                                            </td>
+                                            <td class="leftnav" runat="server" id="Td2" style="font: menu; vertical-align: middle; text-transform: uppercase; width: 15%; color: blue; height: 19px; text-align: left">
+                                                <a href="ViewInfocomTransactions.aspx" style="font: menu; text-transform: uppercase; color: blue">VIEW INFOCOM TRANSACTIONS</a>
+                                            </td>
+                                            <td class="leftnav" runat="server" id="Td9" style="font: menu; vertical-align: middle; text-transform: uppercase; width: 15%; color: blue; height: 19px; text-align: left">
+                                                <a href="ViewCAATransactions.aspx" style="font: menu; text-transform: uppercase; color: blue">VIEW UCAA TRANSACTIONS</a>
+                                            </td>
+                                            <td class="leftnav" runat="server" id="Td5" style="font: menu; vertical-align: middle; text-transform: uppercase; width: 15%; color: blue; height: 19px; text-align: left">
+                                                <a href="VendorRequestLogs.aspx" style="font: menu; text-transform: uppercase; color: blue">Vendor Requests </a>
+                                            </td>
+                                            
+                                            <%} %>
+                                            <td class="leftnav" style="vertical-align: middle; width: 15%; height: 19px; text-align: left"></td>
+                                        </tr>
+
+                                        <%if ((Session["RoleCode"].ToString().Equals("001") && Session["UserBranch"].ToString().Equals("PegPay")) || Session["RoleCode"].ToString().Equals("003"))
+                                            { %>
+                                        <tr>
+                                            <td class="leftnav" style="font: menu; vertical-align: middle; width: 10%; height: 19px; text-align: left">
+                                                <a href="SmsStatsReport.aspx" style="font: menu; text-transform: uppercase; color: blue; width: 20%;">PERIODIC SMS STATS REPORT</a></td>
+                                            <td class="leftnav" style="font: menu; vertical-align: middle; width: 10%; height: 19px; text-align: left">
+                                                <a href="SmsStatsDetalsReport.aspx" style="font: menu; text-transform: uppercase; color: blue; width: 20%;">PERIODIC SMS DETAILS REPORT</a></td>
+
+                                            <%if ((Session["RoleCode"].ToString().Equals("001") && Session["UserBranch"].ToString().Equals("PegPay")))
+                                                { %>
+                                            <td class="leftnav" style="font: menu; vertical-align: middle; width: 10%; height: 19px; text-align: left">
+                                                <a href="UpdateUmemeBank.aspx" style="font: menu; text-transform: uppercase; color: blue; width: 20%;">SWITCH UMEME BANKS</a></td>
+
+                                            <td class="leftnav" style="font: menu; vertical-align: middle; width: 10%; height: 19px; text-align: left">
+                                                <a href="UmemeDirectPage.aspx" style="font: menu; text-transform: uppercase; color: blue; width: 20%;">ACTIVATE UMEME DIRECT</a></td>
+                                            <td class="leftnav" style="font: menu; vertical-align: middle; width: 10%; height: 19px; text-align: left">
+                                                <a href="SmsErrorLogs.aspx" style="font: menu; text-transform: uppercase; color: blue; width: 20%;">SMS ERROR LOGS</a></td>
+
+                                            <td class="leftnav" style="font: menu; vertical-align: middle; width: 10%; height: 19px; text-align: left">
+                                                <a href="RentalCollectionsTransaction.aspx" style="font: menu; text-transform: uppercase; color: blue; width: 20%;">RENTALS TRANSACTION REPORT</a></td>
+                                            <td class="leftnav" style="font: menu; vertical-align: middle; width: 10%; height: 19px; text-align: left">
+                                                <a href="DebitSummaryReport.aspx" style="font: menu; text-transform: uppercase; color: blue; width: 20%;">RENTALS DEBIT SUMMARY</a></td>
+
+                                            <td class="leftnav" style="font: menu; vertical-align: middle; width: 10%; height: 19px; text-align: left">
+                                                <a href="PendingSMS.aspx" style="font: menu; text-transform: uppercase; color: blue; width: 20%;">PENDING SMS DETAILS</a></td>
+
+                                            <td class="leftnav" style="font: menu; vertical-align: middle; width: 10%; height: 19px; text-align: left">
+                                                <a href="UpdateUmemeConnection.aspx" style="font: menu; text-transform: uppercase; color: blue; width: 20%;">SWITCH UMEME CONNECTION</a></td>
+                                            <td class="leftnav" runat="server" id="Td10" style="font: menu; vertical-align: middle; text-transform: uppercase; width: 15%; color: blue; height: 19px; text-align: left">
+                                                <a href="SMSOutubox.aspx" style="font: menu; text-transform: uppercase; color: blue">VEIW SMS-OUTBOX </a>
+                                            </td>
+
+
+                                            <%} %>
+                                        </tr>
+                                        <%} %>
+                                    </table>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="3" style="height: 1px">
+                                    <hr />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 12%; text-align: justify;"></td>
+                                <td style="width: 1%"></td>
+                                <td style="width: 88%; height: 1px">
+                                    <asp:Label ID="lblmsg" runat="server" Font-Bold="False" Font-Names="Arial Narrow"
+                                        ForeColor="Red" Text="." Style="font: menu"></asp:Label></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" style="height: 1px"></td>
+                            </tr>
+                            <tr>
+                                <td style="width: 12%; vertical-align: top; border-right-style: solid; text-align: justify;"
+                                    class="InterFaceTableLeftRowUp">
+                                    <table style="width: 100%; border-top-width: 2px; border-left-width: 2px; border-left-color: #617da6; border-bottom-width: 2px; border-bottom-color: #617da6; border-top-color: #617da6; background-color: #f2f2f2; border-right-width: 2px; border-right-color: #617da6;">
+                                        <% if (Session["RoleCode"].ToString() == "004" || Session["RoleCode"].ToString() == "005")
+                                            {%>
+                                        <tr>
+                                            <td style="width: 100%; height: 2px; text-align: justify;" class="InterFaceTableLeftRowUp">
+                                                <asp:Button ID="btnCallPayments" runat="server" BorderStyle="Inset" Font-Bold="True"
+                                                    Font-Names="Cambria" Font-Underline="False" ForeColor="#0000C0" Text="PAYMENTS"
+                                                    Style="text-align: justify" Width="98%" OnClick="btnCallPayments_Click" /></td>
+                                        </tr>
+                                        <%} %>
+                                        <%if (Session["RoleCode"].ToString() == "003" || Session["RoleCode"].ToString() == "005" || Session["RoleCode"].ToString() == "007")
+                                            {%>
+                                        <tr>
+                                            <td class="InterFaceTableLeftRowUp" style="width: 100%; height: 1px; text-align: justify">
+                                                <asp:Button ID="btnCalRecon" runat="server" BorderStyle="Inset" Font-Bold="True"
+                                                    Font-Names="Cambria" Font-Strikeout="False" Font-Underline="False" ForeColor="#0000C0"
+                                                    Style="text-align: justify" Text="RECONCILIATION" Width="98%" OnClick="btnCalRecon_Click" /></td>
+                                        </tr>
+                                        <%} %>
+                                        <tr>
+                                            <td class="InterFaceTableLeftRowUp" style="width: 100%; height: 1px; text-align: justify">
+                                                <asp:Button ID="btnCalReports" runat="server" BorderStyle="Inset" Font-Bold="True"
+                                                    Font-Names="Cambria" Font-Strikeout="False" Font-Underline="False" ForeColor="#0000C0"
+                                                    Text="REPORTS" Width="98%" Style="text-align: justify" OnClick="btnCalReports_Click" /></td>
+                                        </tr>
+                                        <%if (Session["RoleCode"].ToString() == "006" || Session["RoleCode"].ToString() == "003" || Session["RoleCode"].ToString() == "007")
+                                            {%>
+                                        <tr>
+                                            <td class="InterFaceTableLeftRowUp" style="width: 100%; height: 1px; text-align: justify">
+                                                <asp:Button ID="btnCallBatching" runat="server" BorderStyle="Inset" Font-Bold="True"
+                                                    Font-Names="Cambria" Font-Strikeout="False" Font-Underline="False" ForeColor="#0000C0"
+                                                    Style="text-align: justify" Text="BATCHING" Width="98%" OnClick="btnCallBatching_Click1" /></td>
+                                        </tr>
+                                        <%} %>
+                                        <%if (Session["RoleCode"].ToString() == "001")
+                                            {%>
+                                        <tr>
+                                            <td class="InterFaceTableLeftRowUp" style="width: 100%; height: 1px; text-align: justify">
+                                                <asp:Button ID="btnCallSystemTool" runat="server" BorderStyle="Inset" Font-Bold="True"
+                                                    Font-Names="Cambria" Font-Strikeout="False" Font-Underline="False" ForeColor="#0000C0"
+                                                    Style="text-align: justify" Text="SYSTEM TOOLS" Width="98%" OnClick="btnCallSystemTool_Click" /></td>
+                                        </tr>
+                                        <%} %>
+                                        <tr>
+                                            <td class="InterFaceTableLeftRowUp" style="width: 100%; height: 1px; text-align: justify">
+                                                <asp:Button ID="btnCallAccountDetails" runat="server" BorderStyle="Inset" Font-Bold="True"
+                                                    Font-Names="Cambria" Font-Strikeout="False" Font-Underline="False" ForeColor="#0000C0"
+                                                    Style="text-align: justify" Text="PROFILE TOOL" Width="98%" OnClick="btnCallAccountDetails_Click" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width: 100%; text-align: justify"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width: 100%; text-align: justify"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width: 100%; text-align: justify"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width: 100%; text-align: justify"></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td style="width: 1%"></td>
+                                <td style="vertical-align: top; width: 100%; height: 25px; text-align: left">
+                                    <table align="left" class="style13" style="border-right: #617da6 1px solid; border-top: #617da6 1px solid; border-left: #617da6 1px solid; width: 100%; border-bottom: #617da6 1px solid; height: 300px">
+                                        <tr>
+                                            <td style="vertical-align: top; text-align: left; width: 100%;">
+                                                <div style="vertical-align: top; text-align: center">
+                                                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                                                    </asp:ContentPlaceHolder>
+                                                </div>
+                                                &nbsp;
+                                                <br />
+                                                <br />
+                                                <br />
+                                                <br />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="vertical-align: top; width: 100%; text-align: left; height: 21px;"></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="font-size: 13px; vertical-align: top; font-family: Tahoma; text-align: center"></td>
+                </tr>
+                <tr>
+                    <td style="font-size: 13px; vertical-align: top; font-family: Tahoma; background-color: #eeeeee; text-align: center"></td>
+                </tr>
+                <tr>
+                    <td style="font-size: 13px; vertical-align: top; font-family: Tahoma; background-color: #eeeeee; text-align: center"></td>
+                </tr>
+                <tr>
+                    <td style="font-family: Tahoma; font-size: 13px; vertical-align: top; text-align: center; background-color: #EEEEEE;">
+                        <div id="copyinfo" style="padding: 10px 0pt 20px; font-family: 'Courier New'; font-weight: bold; text-transform: uppercase; color: white; background-color: #acbd29;">
+                            © 2012, PEGASUS TECHNOLOGIES
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</body>
+</html>

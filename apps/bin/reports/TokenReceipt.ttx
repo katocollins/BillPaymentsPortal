@@ -1,0 +1,16 @@
+MsgIdDate	String	50	
+ReceiptNumber	String	50	
+OperatorId	String	50	
+ClientId	String	50	
+MeterNumber	String	50	
+CustomerRef	String	50	
+CustomerName	String	50	
+TotalAmount	Currency		
+Units	Long		
+TokenValue	Currency		
+Tax	Currency		
+Amount1	Currency		
+Num1	Number		
+Token	String	30	
+Str1	String	30	
+Str2	String	30	
