@@ -1,0 +1,21 @@
+PaymentID	Number		
+VendorRef	String	50	
+Recieptno	String	30	
+Custref	String	30	
+CustomerName	String	70	
+PaymentMode	String	20	
+PaymentType	String	30	
+PrintedBy	String	30	
+DateRange	String	30	
+Amount	Currency		
+PayDate	Date		
+AreaName	String	30	
+DistrictName	String	30	
+Str1	String	30	
+Str2	String	30	
+Num1	Number		
+Num2	Number		
+Amount1	Currency		
+Amount2	Currency		
+Date1	Date		
+Date2	Date		

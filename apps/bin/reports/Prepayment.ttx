@@ -1,0 +1,28 @@
+Token	String	50	
+ReceiptNumber	String	30	
+TotalAmount	Currency		
+Tax	Currency		
+Tax1	Long		
+Inflation	Currency		
+Inflation1	Long		
+Fuel	Currency		
+Fuel1	Long		
+Fx	Currency		
+TokenValue	Currency		
+TokenValue1	Long		
+Units	Number		
+Units1	Long		
+MsgIdDate	Date		
+GenerationDate	Date		
+Num1	Number		
+Num2	Number		
+Num3	Number		
+Num4	Number		
+Num5	Number		
+Num6	Number		
+Str1	String	30	
+Str2	String	30	
+Str3	String	30	
+Str4	String	30	
+PrintedBy	String	50	
+DateRange	String	30	

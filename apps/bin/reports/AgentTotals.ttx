@@ -1,0 +1,12 @@
+VendorCode	String	50	
+Vendor	String	50	
+Total	String	50	
+DateRange	String	30	
+PrintedBy	String	50	
+Str1	String	30	
+Str2	String	30	
+Amount	Currency		
+Number1	Number		
+Number2	Number		
+Amount1	Currency		
+Date1	Date		

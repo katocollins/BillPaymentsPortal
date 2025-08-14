@@ -1,0 +1,10 @@
+DistrictCode	String	20	
+DistrictName	String	50	
+Total	Currency		
+PrintedBy	String	30	
+DateRange	String	30	
+Str1	String	30	
+Str2	String	30	
+Amount	Currency		
+Numer1	Number		
+Amount2	Currency		

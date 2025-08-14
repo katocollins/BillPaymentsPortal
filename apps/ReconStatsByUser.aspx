@@ -1,0 +1,177 @@
+﻿<%@ Page Language="C#" MasterPageFile="~/AccountantMaster.master" AutoEventWireup="true" CodeFile="ReconStatsByUser.aspx.cs" Inherits="ReconStatsByUser" Title="USER RECON STATS" %>
+
+<%@ Register Assembly="CrystalDecisions.Web, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304"
+    Namespace="CrystalDecisions.Web" TagPrefix="CR" %>
+<%@ Register 
+ Assembly="AjaxControlToolkit" 
+ Namespace="AjaxControlToolkit" 
+ TagPrefix="ajaxToolkit" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+     <table style="width: 98%">
+                            <tr>
+                                <td style="width: 98%; height: 2px">
+                                    <table align="center" cellpadding="0" cellspacing="0" style="width: 50%">
+                                         <tr>
+                                           <td style="vertical-align: middle; width: 98%; height: 2px; text-align: center;">
+                                              <% 
+                                                    string IsError = Session["IsError"] as string;
+                                                    if (IsError == null)
+                                                    {
+                                                        Response.Write("<div>");
+
+                                                    }
+                                                    else if (IsError == "True")
+                                                    {
+                                                        Response.Write("<div class=\"alert alert-danger\">");
+
+                                                    }
+                                                    else
+                                                    {
+                                                        Response.Write("<div class=\"alert alert-success\">");
+                                                    } 
+                                                %>
+                                                <strong>
+                                                <asp:Label ID="lblmsg" runat="server"></asp:Label></strong>
+                                                <%Response.Write("</div>"); %>
+                                                <asp:Label ID="lblCount" runat="server" Font-Bold="True" ForeColor="#0000C0" Text="."></asp:Label></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                      </table>
+    <table style="width: 100%">
+        <tr>
+            <td style="width: 98%; height: 2px">
+                <ajaxToolkit:ToolkitScriptManager id="ScriptManager1" runat="Server" EnableScriptGlobalization="true"
+                    EnableScriptLocalization="true">
+                </ajaxToolkit:ToolkitScriptManager><table align="center" border="0" cellpadding="0" cellspacing="0" class="InterfaceInforTable "
+                                        style="width: 90%">
+                    <tr style="color: #000000">
+                        <td class="InterfaceHeaderLabel" colspan="2" style="vertical-align: top; height: 19px;
+                                                text-align: center">
+                            &nbsp;&nbsp; USER RECON STATISTICS</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 98%; height: 5px">
+                <table align="center" cellpadding="0" cellspacing="0" style="width: 95%; border-right: #617da6 1px solid; border-top: #617da6 1px solid; border-left: #617da6 1px solid; border-bottom: #617da6 1px solid;">
+                    <tr>
+                      <td class="InterfaceHeaderLabel2" style="vertical-align: middle; width: 21%; height: 18px;
+                            text-align: center">
+                            Telecom</td>
+                         <td class="InterfaceHeaderLabel2" style="vertical-align: middle; width: 21%; height: 18px;
+                            text-align: center">
+                            ACCOUNT NUMBER</td>
+                        <td class="InterfaceHeaderLabel2" style="vertical-align: middle; width: 21%; height: 18px;
+                            text-align: center">
+                            From Date</td>
+                             <td class="InterfaceHeaderLabel2" colspan="1" style="vertical-align: middle; width: 179px;
+                            height: 18px; text-align: center">
+                            To Date</td>
+                                     
+                        <td class="InterfaceHeaderLabel2" style="vertical-align: middle; width: 17%; height: 18px;
+                            text-align: center">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="ddcolortabsline2" colspan="6" style="vertical-align: middle; text-align: center; height: 1px;">
+                            </td>
+                    </tr>
+                    <tr>
+                             <td style="vertical-align: middle; width: 21%; height: 23px; text-align: center; border-top-width: 1px; border-left-width: 1px; border-left-color: #617da6; border-bottom-width: 1px; border-bottom-color: #617da6; border-top-color: #617da6; border-right-width: 1px; border-right-color: #617da6;">
+                            &nbsp;<asp:DropDownList ID="ddTelecom" runat="server" CssClass="InterfaceRadioButtonlist" AutoPostBack="true" OnSelectedIndexChanged="ddTelecom_SelectedIndexChanged"
+                                Width="94%" style="font: menu" Height="34px">
+                                <asp:ListItem>True</asp:ListItem>
+                                <asp:ListItem>False</asp:ListItem>
+                            </asp:DropDownList></td>
+
+
+                          <td style="vertical-align: middle; width: 21%; height: 23px; text-align: center; border-top-width: 1px; border-left-width: 1px; border-left-color: #617da6; border-bottom-width: 1px; border-bottom-color: #617da6; border-top-color: #617da6; border-right-width: 1px; border-right-color: #617da6;">
+                            &nbsp;<asp:DropDownList ID="ddOva" runat="server" CssClass="InterfaceRadioButtonlist"
+                                Width="94%" style="font: menu" Height="34px">
+                                <asp:ListItem Value="">ALL</asp:ListItem>
+                            </asp:DropDownList></td>
+
+                          <td style="vertical-align: middle; width: 17%; height: 23px; text-align: center;
+                            border-top-width: 1px; border-left-width: 1px; border-left-color: #617da6; border-bottom-width: 1px;
+                            border-bottom-color: #617da6; border-top-color: #617da6; border-right-width: 1px;
+                            border-right-color: #617da6;">
+                            &nbsp;<asp:TextBox ID="txtfromDate" runat="server" Style="font: menu" Width="90%"></asp:TextBox></td>
+                        <td style="border-top-width: 1px; border-left-width: 1px; border-left-color: #617da6;
+                            border-bottom-width: 1px; border-bottom-color: #617da6; vertical-align: middle;
+                            width: 17%; border-top-color: #617da6; height: 23px; text-align: center; border-right-width: 1px;
+                            border-right-color: #617da6">
+                            <asp:TextBox ID="txttoDate" runat="server" Style="font: menu" Width="90%"></asp:TextBox></td>
+                        <td style="vertical-align: middle; width: 17%; height: 23px; text-align: center; border-top-width: 1px; border-left-width: 1px; border-left-color: #617da6; border-bottom-width: 1px; border-bottom-color: #617da6; border-top-color: #617da6; border-right-width: 1px; border-right-color: #617da6;">
+                            <asp:Button ID="btnOK" runat="server" Font-Size="9pt" Height="23px" OnClick="btnOK_Click"
+                                Text="Search" Width="85px" style="font: menu" />&nbsp;</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 98%; height: 1px;">
+            <hr />
+                &nbsp;</td>
+        </tr>
+        <tr>
+            <td style="width: 98%; height: 1px">
+                <asp:MultiView ID="MultiView2" runat="server">
+                    <asp:View ID="View3" runat="server">
+                        <table>
+                           <tr>
+                                <td style="width: 20%; height: 2px">
+                                    <table align="center" style="border-right: #617da6 1px solid; border-top: #617da6 1px solid;
+                                        border-left: #617da6 1px solid; width: 50%; border-bottom: #617da6 1px solid">
+                                        <tr>
+                                            <td style="border-right: #617da6 1px solid; border-top: #617da6 1px solid; border-left: #617da6 1px solid;
+                                                width: 100px; border-bottom: #617da6 1px solid">
+                                                <asp:RadioButton ID="rdPdf" runat="server" Font-Bold="True" GroupName="FileFormat"
+                                                    Text="PDF" /></td>
+                                            <td style="border-right: #617da6 1px solid; border-top: #617da6 1px solid; border-left: #617da6 1px solid;
+                                                width: 100px; border-bottom: #617da6 1px solid">
+                                                <asp:RadioButton ID="rdExcel" runat="server" Font-Bold="True" GroupName="FileFormat"
+                                                    Text="EXCEL" /></td>
+                                            <td style="border-right: #617da6 1px solid; border-top: #617da6 1px solid; border-left: #617da6 1px solid;
+                                                width: 100px; border-bottom: #617da6 1px solid">
+                                                <asp:Button ID="btnConvert" runat="server" Font-Size="9pt" Height="23px" OnClick="btnConvert_Click"
+                                                    Style="font: menu" Text="Convert" Width="85px" /></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                           </tr>
+                       </table>
+                    </asp:View>
+                </asp:MultiView></td>
+        </tr>
+        <tr>
+            <td style="width: 98%; height: 2px">
+                &nbsp;<asp:MultiView ID="MultiView1" runat="server">
+                    <asp:View ID="View1" runat="server">
+                        <div class="table-responsive">
+                                        <asp:GridView runat="server" Width="98%" CssClass="table table-bordered table-hover" ID="dataGridResults" AllowPaging="true"
+                                            OnPageIndexChanging="OnPageIndexChanging" PageSize="30" CellPadding="4" CellSpacing="2"  OnRowCommand="dataGridResults_RowCommand">
+                                            <AlternatingRowStyle BackColor="#BFE4FF" />
+                                            <HeaderStyle BackColor="#0375b7" Font-Bold="false" ForeColor="white" Font-Italic="False"
+                                                Font-Overline="False" Font-Strikeout="False" Font-Underline="False" Height="30px" HorizontalAlign="Left"/>
+                                            <RowStyle HorizontalAlign ="left" />
+                                            <PagerStyle CssClass="cssPager" BackColor="#99CCCC" ForeColor="#003399" HorizontalAlign="Center" />
+                                            <FooterStyle HorizontalAlign="Center" />
+                                        </asp:GridView>
+                        </div>
+                    </asp:View>
+                </asp:MultiView></td>
+                        <ajaxToolkit:CalendarExtender ID="CalendarExtender1" runat="server" CssClass="cal_Theme1"
+                            Format="yyyy-MM-dd" PopupPosition="BottomRight" TargetControlID="txtFromDate">
+                        </ajaxToolkit:CalendarExtender>
+                        <ajaxToolkit:CalendarExtender ID="CalendarExtender2" runat="server" CssClass="cal_Theme1"
+                            Format="yyyy-MM-dd" PopupPosition="BottomRight" TargetControlID="txtToDate">
+                        </ajaxToolkit:CalendarExtender>
+        </tr>
+    </table>
+
+    <br />
+</asp:Content>
+

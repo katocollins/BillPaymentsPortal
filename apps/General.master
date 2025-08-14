@@ -1,0 +1,201 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="General.master.cs" Inherits="General" %>
+<%@ Import Namespace="System.Data" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>Untitled Page</title>
+    
+    <link href="scripts/WQC_stylesheet.css" rel="stylesheet" type="text/css" />
+    
+    <link href="scripts/globalscape.css" rel="stylesheet" type="text/css" />
+    
+    <script type="text/javascript" src="ddtabmenufiles/ddtabmenu.js">
+
+/***********************************************
+* DD Tab Menu script- © Dynamic Drive DHTML code library (www.dynamicdrive.com)
+* This notice MUST stay intact for legal use
+* Visit Dynamic Drive at http://www.dynamicdrive.com/ for full source code
+***********************************************/
+
+    </script>
+    
+
+<!-- CSS for Tab Menu #4 -->
+<link rel="stylesheet" type="text/css" href="ddtabmenufiles/ddcolortabs.css" />
+
+<script type="text/javascript">
+//SYNTAX: ddtabmenu.definemenu("tab_menu_id", integer OR "auto")
+ddtabmenu.definemenu("ddtabs1", 0) //initialize Tab Menu #1 with 1st tab selected
+ddtabmenu.definemenu("ddtabs2", 1) //initialize Tab Menu #2 with 2nd tab selected
+ddtabmenu.definemenu("ddtabs3", 1) //initialize Tab Menu #3 with 2nd tab selected
+ddtabmenu.definemenu("ddtabs4", 2) //initialize Tab Menu #4 with 3rd tab selected
+ddtabmenu.definemenu("ddtabs5", -1) //initialize Tab Menu #5 with NO tabs selected (-1)
+
+function TABLE1_onclick() {
+
+}
+
+</script>
+    
+    <style type="text/css">
+        
+        .style12
+        {
+            width: 100%;
+        }
+         .style13
+        {
+            width: 99%;
+        }
+    
+        </style>
+    
+</head>
+<body>
+    <form id="form1" runat="server">
+
+ <table cellpadding="0" cellspacing="0" class="style12">
+        <tr>
+            <td style="vertical-align: top; text-align: left">
+               
+               <table style="border: 1px solid #EEEEEE; width: 100%; background-color: #ffffff; padding-top: 0px; margin-top: 0px;">
+                   <tr>
+                       <td style="width: 1%">
+                       </td>
+                       <td style="width: 99%; text-align: center; height: 1px;">
+                           <table style="width: 100%">
+                               <tr>
+                                   <td class="InterFaceTableLeftRowUp" style="width: 90%; text-align: center; height: 2px;">
+                                       &nbsp;</td>
+                                   <td style="width: 10%">
+                                       <asp:LinkButton ID="LinkButton1" runat="server" Font-Bold="True" Font-Names="Arial Narrow"
+                                           OnClick="LinkButton1_Click">Sign out</asp:LinkButton></td>
+                               </tr>
+                           </table>
+                       </td>
+                   </tr>
+                   <tr>
+                       <td style="width: 1%">
+                       </td>
+                       <td class="InterfaceHeaderLine" style="width: 99%; height: 2px; background-color: #acbd29;">
+                       </td>
+                   </tr>
+            <tr>
+                <td style="width: 1%">
+                </td>
+                <td style="width: 99%; text-align: center;">
+                    <img alt="" src="Images/Billing.png" style="width: 518px; height: 44px" /></td>
+            </tr>
+                   <tr>
+                       <td style="width: 1%">
+                       </td>
+                       <td style="width: 99%">
+                       </td>
+                   </tr>
+            <tr>
+                <td style="width: 1%">
+                </td>
+                <td style="width: 99%">
+                
+   <div id="ddtabs5" class="ddcolortabs">
+<ul style="text-align: left" class="InterFaceTableLeftRowUp">   
+    <asp:Button ID="btnCallCustDetails" runat="server" BorderStyle="Inset" Font-Bold="True"
+        Font-Names="Cambria" Font-Underline="False" ForeColor="#0000C0" Text="PAYMENTS" /><asp:Button
+            ID="btnCalReceiptDetails" runat="server" BorderStyle="Inset" Font-Bold="True"
+            Font-Names="Cambria" Font-Strikeout="False" Font-Underline="False" ForeColor="#0000C0"
+            Text="REPORTS" Width="107px" /><asp:Button ID="btnExpenditure" runat="server"
+                BorderStyle="Inset" Font-Bold="True" Font-Names="Cambria" Font-Strikeout="False"
+                Font-Underline="False" ForeColor="#0000C0" Text="RECONCIATION" /><asp:Button ID="btnCallTrenching"
+                    runat="server" BorderStyle="Inset" Font-Bold="True" Font-Names="Cambria" Font-Strikeout="False"
+                    Font-Underline="False" ForeColor="#0000C0" Text="SYSTEM TOOLS" Width="139px" /><asp:Button
+                        ID="btnFieldDetails" runat="server" BorderStyle="Inset" Font-Bold="True" Font-Names="Cambria"
+                        Font-Strikeout="False" Font-Underline="False" ForeColor="#0000C0" Text="ACCOUNT DETAILS"
+                        Width="161px" /></ul>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 1%">
+                    &nbsp;</td>
+                                <td style="width: 99%; text-align: center; vertical-align: middle;">
+                                   <table align="left" cellpadding="0" cellspacing="0" style="width: 95%; font: menu;" id="TABLE1" onclick="return TABLE1_onclick()">
+                                           <tr>
+                                               <td class="leftnav" style="vertical-align: middle; width: 2%; height: 19px; text-align: left">
+                                                  </td>
+                                              <td class="leftnav" style="vertical-align: middle; width: 10%; height: 19px; text-align: left; font: menu;">
+                                                   <a href="AddUser.aspx" style="font: menu; text-transform: uppercase; color: blue">NEW USER</a></td>
+                                               <td class="leftnav" style="vertical-align: middle; width: 15%; height: 19px; text-align: left; font: menu; text-transform: uppercase; color: blue;">
+                                                   <a href="ViewUsers.aspx" style="font: menu; text-transform: uppercase; color: blue">VIEW USERS</a></td><td class="leftnav" style="vertical-align: middle; width: 20%; height: 19px; text-align: left">
+                                                   </td>
+                                               <td class="leftnav" style="vertical-align: middle; width: 24%; height: 19px; text-align: left">
+                                               </td>
+                                               <td class="leftnav" style="vertical-align: middle; width: 24%; height: 19px; text-align: left">
+                                               </td>
+                                           </tr>
+                                       </table>
+                      </td>
+            </tr>
+                       <tr>
+                       <td style="width: 1%">
+                       </td>
+                       <td class="InterfaceHeaderLine" style="vertical-align: middle; width: 99%; height: 2px;
+                           text-align: center">
+                       </td>
+                   </tr>
+            <tr>
+                <td style="width: 1%">
+                    &nbsp;</td>
+                <td style="width: 99%; text-align: center; vertical-align: middle;">
+                    &nbsp;<asp:Label ID="lblmsg" runat="server" Font-Bold="False" Font-Names="Arial Narrow"
+                        Font-Size="11pt" ForeColor="Red" Text="."></asp:Label></td>
+            </tr>
+            <tr>
+                <td style="width: 1%">
+                    &nbsp;</td>
+                <td style="width: 99%">
+                    <table align ="left" class="style13" 
+                        style="border: 1px solid #617DA6; height: 300px; ">
+                        <tr>
+                            <td style="text-align: left; vertical-align: top">
+           
+                                <div style="vertical-align: top; text-align: center">
+                                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                                    </asp:ContentPlaceHolder>
+                                </div>
+           <br />
+                                </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 1%"></td>
+                <td style="width: 99%">
+                    <table style="width: 100%">
+                        <tr>
+                            <td class="InterfaceHeaderLabel2" style="width: 10%">
+                                Name</td>
+                            <td style="width: 100px">
+                                <asp:Label ID="lblName" runat="server" Text="."></asp:Label></td>
+                            <td style="width: 100px">
+                            </td>
+                            <td style="width: 100px">
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            </table></td>
+        </tr>
+        <tr>
+            <td style="font-family: Tahoma; font-size: 13px; vertical-align: top; text-align: center; background-color: #EEEEEE;">
+                <div id="copyinfo" style="padding: 10px 0pt 20px; font-family: 'Courier New'; font-weight: bold; text-transform: uppercase; color: white; background-color: #acbd29;">© 2012, UMEME |&nbsp; Powered by PEG-PAY</div>
+                </td>
+        </tr>
+    </table>
+
+    </form>
+</body>
+</html>

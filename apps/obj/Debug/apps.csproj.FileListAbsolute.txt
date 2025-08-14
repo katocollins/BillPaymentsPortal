@@ -1,0 +1,2 @@
+C:\Users\Collins Kato\Desktop\apps\apps\obj\Debug\apps.csproj.AssemblyReference.cache
+C:\Users\Collins Kato\Desktop\apps\apps\obj\Debug\apps.csproj.CoreCompileInputs.cache
