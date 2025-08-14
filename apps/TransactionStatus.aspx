@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/ReportMaster.master" AutoEventWireup="true" CodeFile="TransactionStatus.aspx.cs" Inherits="BankErrors" Title="TRANSACTIONS STATUS" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/ReportMaster.master" AutoEventWireup="true" CodeFile="TransactionStatus.aspx.cs" Inherits="BankErrors" Title="TRANSACTIONS STATUS" %>
 
 <%@ Register Assembly="CrystalDecisions.Web, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304"
     Namespace="CrystalDecisions.Web" TagPrefix="CR" %>

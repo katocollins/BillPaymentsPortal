@@ -13,7 +13,7 @@
 
 
 // ]]>
-</script>
+    </script>
 
     <table style="width: 100%">
         <tr>

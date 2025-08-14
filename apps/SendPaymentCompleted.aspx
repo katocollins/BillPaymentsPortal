@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="SendPaymentCompleted.aspx.cs" Inherits="SendPaymentCompleted" Title="Send Payment Completed" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="SendPaymentCompleted.aspx.cs" Inherits="SendPaymentCompleted" Title="Send Payment Completed" %>
 
 <%@ Register 
  Assembly="AjaxControlToolkit" 

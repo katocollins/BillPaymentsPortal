@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/ReportMaster.master" AutoEventWireup="true" CodeFile="Transactions.aspx.cs" Inherits="Transactions" Title="TRANSACTIONS" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/ReportMaster.master" AutoEventWireup="true" CodeFile="Transactions.aspx.cs" Inherits="Transactions" Title="TRANSACTIONS" %>
 
 <%@ Register 
  Assembly="AjaxControlToolkit" 

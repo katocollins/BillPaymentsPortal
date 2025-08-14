@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/PaymentMaster.master" AutoEventWireup="true" CodeFile="ViewInvoices.aspx.cs" Inherits="ViewInvoices" Title="VIEW INVOICES" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/PaymentMaster.master" AutoEventWireup="true" CodeFile="ViewInvoices.aspx.cs" Inherits="ViewInvoices" Title="VIEW INVOICES" %>
 
 <%@ Register Assembly="CrystalDecisions.Web, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304"
     Namespace="CrystalDecisions.Web" TagPrefix="CR" %>

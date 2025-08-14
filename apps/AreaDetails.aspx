@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="AreaDetails.aspx.cs" 
+﻿<%@ Page Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="AreaDetails.aspx.cs" 
 Inherits="AreaDetails" 
 Title="AREA DETAILS"
 

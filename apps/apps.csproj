@@ -165,12 +165,89 @@
     <Compile Include="Admin.aspx.designer.cs">
       <DependentUpon>Admin.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AgentCredit1.aspx.cs">
-      <DependentUpon>AgentCredit1.aspx</DependentUpon>
+    <Compile Include="AgentCredit.aspx.cs">
+      <DependentUpon>AgentCredit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AgentCredit1.aspx.designer.cs">
-      <DependentUpon>AgentCredit1.aspx</DependentUpon>
+    <Compile Include="AgentCredit.aspx.designer.cs">
+      <DependentUpon>AgentCredit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AgentTotals.aspx.cs">
+      <DependentUpon>AgentTotals.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgentTotals.aspx.designer.cs">
+      <DependentUpon>AgentTotals.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AirtimeApproval.aspx.cs">
+      <DependentUpon>AirtimeApproval.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AirtimeApproval.aspx.designer.cs">
+      <DependentUpon>AirtimeApproval.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AirtimeLogs.aspx.cs">
+      <DependentUpon>AirtimeLogs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AirtimeLogs.aspx.designer.cs">
+      <DependentUpon>AirtimeLogs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AllCredit.aspx.cs">
+      <DependentUpon>AllCredit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AllCredit.aspx.designer.cs">
+      <DependentUpon>AllCredit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AppErrors.aspx.cs">
+      <DependentUpon>AppErrors.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AppErrors.aspx.designer.cs">
+      <DependentUpon>AppErrors.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ApproveCredits.aspx.cs">
+      <DependentUpon>ApproveCredits.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ApproveCredits.aspx.designer.cs">
+      <DependentUpon>ApproveCredits.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ApproveData.aspx.cs">
+      <DependentUpon>ApproveData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ApproveData.aspx.designer.cs">
+      <DependentUpon>ApproveData.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ApproveTrans.aspx.cs">
+      <DependentUpon>ApproveTrans.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ApproveTrans.aspx.designer.cs">
+      <DependentUpon>ApproveTrans.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AppTransactions.aspx.cs">
+      <DependentUpon>AppTransactions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AppTransactions.aspx.designer.cs">
+      <DependentUpon>AppTransactions.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AreaDetails.aspx.cs">
+      <DependentUpon>AreaDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AreaDetails.aspx.designer.cs">
+      <DependentUpon>AreaDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AutoReconciliation.aspx.cs">
+      <DependentUpon>AutoReconciliation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AutoReconciliation.aspx.designer.cs">
+      <DependentUpon>AutoReconciliation.aspx</DependentUpon>
     </Compile>
     <Compile Include="default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
@@ -255,13 +332,22 @@
       <DependentUpon>SearchVendorToken.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="SearchVendorToken.aspx.designer.cs">
+      <DependentUpon>SearchVendorToken.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SendPaymentCompleted.aspx.cs">
       <DependentUpon>SendPaymentCompleted.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="SendPaymentCompleted.aspx.designer.cs">
+      <DependentUpon>SendPaymentCompleted.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Settingz.aspx.cs">
       <DependentUpon>Settingz.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Settingz.aspx.designer.cs">
+      <DependentUpon>Settingz.aspx</DependentUpon>
     </Compile>
     <Compile Include="Setup.master.cs">
       <DependentUpon>Setup.master</DependentUpon>
@@ -271,173 +357,302 @@
       <DependentUpon>SmsErrorLogs.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="SmsErrorLogs.aspx.designer.cs">
+      <DependentUpon>SmsErrorLogs.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SMSOutubox.aspx.cs">
       <DependentUpon>SMSOutubox.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SMSOutubox.aspx.designer.cs">
+      <DependentUpon>SMSOutubox.aspx</DependentUpon>
     </Compile>
     <Compile Include="SmsStatsDetalsReport.aspx.cs">
       <DependentUpon>SmsStatsDetalsReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="SmsStatsDetalsReport.aspx.designer.cs">
+      <DependentUpon>SmsStatsDetalsReport.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SmsStatsReport.aspx.cs">
       <DependentUpon>SmsStatsReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SmsStatsReport.aspx.designer.cs">
+      <DependentUpon>SmsStatsReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="StanbicVasUssdSession.aspx.cs">
       <DependentUpon>StanbicVasUssdSession.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="StanbicVasUssdSession.aspx.designer.cs">
+      <DependentUpon>StanbicVasUssdSession.aspx</DependentUpon>
+    </Compile>
     <Compile Include="StanbicVasUssdSessionTransactions.aspx.cs">
       <DependentUpon>StanbicVasUssdSessionTransactions.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StanbicVasUssdSessionTransactions.aspx.designer.cs">
+      <DependentUpon>StanbicVasUssdSessionTransactions.aspx</DependentUpon>
     </Compile>
     <Compile Include="SystemPassword.aspx.cs">
       <DependentUpon>SystemPassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="SystemPassword.aspx.designer.cs">
+      <DependentUpon>SystemPassword.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SystemReports.aspx.cs">
       <DependentUpon>SystemReports.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemReports.aspx.designer.cs">
+      <DependentUpon>SystemReports.aspx</DependentUpon>
     </Compile>
     <Compile Include="TellerSessions.aspx.cs">
       <DependentUpon>TellerSessions.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="TellerSessions.aspx.designer.cs">
+      <DependentUpon>TellerSessions.aspx</DependentUpon>
+    </Compile>
     <Compile Include="TransactionByDistrict.aspx.cs">
       <DependentUpon>TransactionByDistrict.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TransactionByDistrict.aspx.designer.cs">
+      <DependentUpon>TransactionByDistrict.aspx</DependentUpon>
     </Compile>
     <Compile Include="TransactionByRef.aspx.cs">
       <DependentUpon>TransactionByRef.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="TransactionByRef.aspx.designer.cs">
+      <DependentUpon>TransactionByRef.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Transactions.aspx.cs">
       <DependentUpon>Transactions.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Transactions.aspx.designer.cs">
+      <DependentUpon>Transactions.aspx</DependentUpon>
     </Compile>
     <Compile Include="TransactionsForPrepaidVendors.aspx.cs">
       <DependentUpon>TransactionsForPrepaidVendors.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="TransactionsForPrepaidVendors.aspx.designer.cs">
+      <DependentUpon>TransactionsForPrepaidVendors.aspx</DependentUpon>
+    </Compile>
     <Compile Include="TransactionsNew.aspx.cs">
       <DependentUpon>TransactionsNew.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TransactionsNew.aspx.designer.cs">
+      <DependentUpon>TransactionsNew.aspx</DependentUpon>
     </Compile>
     <Compile Include="TransactionStatus.aspx.cs">
       <DependentUpon>TransactionStatus.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="TransactionStatus.aspx.designer.cs">
+      <DependentUpon>TransactionStatus.aspx</DependentUpon>
+    </Compile>
     <Compile Include="TransferFailedArchiveToReceived.aspx.cs">
       <DependentUpon>TransferFailedArchiveToReceived.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TransferFailedArchiveToReceived.aspx.designer.cs">
+      <DependentUpon>TransferFailedArchiveToReceived.aspx</DependentUpon>
     </Compile>
     <Compile Include="UmemeDirectPage.aspx.cs">
       <DependentUpon>UmemeDirectPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="UmemeDirectPage.aspx.designer.cs">
+      <DependentUpon>UmemeDirectPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UmemeLogs.aspx.cs">
       <DependentUpon>UmemeLogs.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UmemeLogs.aspx.designer.cs">
+      <DependentUpon>UmemeLogs.aspx</DependentUpon>
     </Compile>
     <Compile Include="UpdateCustomerReference.aspx.cs">
       <DependentUpon>UpdateCustomerReference.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="UpdateCustomerReference.aspx.designer.cs">
+      <DependentUpon>UpdateCustomerReference.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UpdateUmemeBank.aspx.cs">
       <DependentUpon>UpdateUmemeBank.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UpdateUmemeBank.aspx.designer.cs">
+      <DependentUpon>UpdateUmemeBank.aspx</DependentUpon>
     </Compile>
     <Compile Include="UpdateUmemeConnection.aspx.cs">
       <DependentUpon>UpdateUmemeConnection.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="UpdateUmemeConnection.aspx.designer.cs">
+      <DependentUpon>UpdateUmemeConnection.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UpdateUtilityTranRef.aspx.cs">
       <DependentUpon>UpdateUtilityTranRef.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UpdateUtilityTranRef.aspx.designer.cs">
+      <DependentUpon>UpdateUtilityTranRef.aspx</DependentUpon>
     </Compile>
     <Compile Include="USSDGatewayAvailability.aspx.cs">
       <DependentUpon>USSDGatewayAvailability.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="USSDGatewayAvailability.aspx.designer.cs">
+      <DependentUpon>USSDGatewayAvailability.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UssdLogs.aspx.cs">
       <DependentUpon>UssdLogs.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UssdLogs.aspx.designer.cs">
+      <DependentUpon>UssdLogs.aspx</DependentUpon>
     </Compile>
     <Compile Include="UtilityErrorsByID.aspx.cs">
       <DependentUpon>UtilityErrorsByID.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="UtilityErrorsByID.aspx.designer.cs">
+      <DependentUpon>UtilityErrorsByID.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UtilityLogs.aspx.cs">
       <DependentUpon>UtilityLogs.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UtilityLogs.aspx.designer.cs">
+      <DependentUpon>UtilityLogs.aspx</DependentUpon>
     </Compile>
     <Compile Include="VasTransactions.aspx.cs">
       <DependentUpon>VasTransactions.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="VendorReconTransactionReport.aspx.cs">
+    <Compile Include="VasTransactions.aspx.designer.cs">
+      <DependentUpon>VasTransactions.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VendorreconTransactionReport.aspx.cs">
       <DependentUpon>VendorreconTransactionReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VendorreconTransactionReport.aspx.designer.cs">
+      <DependentUpon>VendorreconTransactionReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="VendorRequestLogs.aspx.cs">
       <DependentUpon>VendorRequestLogs.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="VendorRequestLogs.aspx.designer.cs">
+      <DependentUpon>VendorRequestLogs.aspx</DependentUpon>
+    </Compile>
     <Compile Include="VendorUtilityCredentials.aspx.cs">
       <DependentUpon>VendorUtilityCredentials.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VendorUtilityCredentials.aspx.designer.cs">
+      <DependentUpon>VendorUtilityCredentials.aspx</DependentUpon>
     </Compile>
     <Compile Include="VendorUtilityMappingAirtime.aspx.cs">
       <DependentUpon>VendorUtilityMappingAirtime.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="VendorUtilityMappingAirtime.aspx.designer.cs">
+      <DependentUpon>VendorUtilityMappingAirtime.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ViewBin.aspx.cs">
       <DependentUpon>ViewBin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewBin.aspx.designer.cs">
+      <DependentUpon>ViewBin.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewCAATransactions.aspx.cs">
       <DependentUpon>ViewCAATransactions.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="ViewCAATransactions.aspx.designer.cs">
+      <DependentUpon>ViewCAATransactions.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ViewDstvTransactions.aspx.cs">
       <DependentUpon>ViewDstvTransactions.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewDstvTransactions.aspx.designer.cs">
+      <DependentUpon>ViewDstvTransactions.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewInfocomTransactions.aspx.cs">
       <DependentUpon>ViewInfocomTransactions.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="ViewInfocomTransactions.aspx.designer.cs">
+      <DependentUpon>ViewInfocomTransactions.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ViewInvoices.aspx.cs">
       <DependentUpon>ViewInvoices.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewInvoices.aspx.designer.cs">
+      <DependentUpon>ViewInvoices.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewLogins.aspx.cs">
       <DependentUpon>ViewLogins.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="ViewLogins.aspx.designer.cs">
+      <DependentUpon>ViewLogins.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ViewPayBatches.aspx.cs">
       <DependentUpon>ViewPayBatches.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewPayBatches.aspx.designer.cs">
+      <DependentUpon>ViewPayBatches.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewPayments.aspx.cs">
       <DependentUpon>ViewPayments.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="ViewPayments.aspx.designer.cs">
+      <DependentUpon>ViewPayments.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ViewPrepaidCharges.aspx.cs">
       <DependentUpon>ViewPrepaidCharges.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewPrepaidCharges.aspx.designer.cs">
+      <DependentUpon>ViewPrepaidCharges.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewReconExceptions.aspx.cs">
       <DependentUpon>ViewReconExceptions.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="ViewReconExceptions.aspx.designer.cs">
+      <DependentUpon>ViewReconExceptions.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ViewUsers.aspx.cs">
       <DependentUpon>ViewUsers.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="ViewUsers.aspx.designer.cs">
+      <DependentUpon>ViewUsers.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ViewVendors.aspx.cs">
       <DependentUpon>ViewVendors.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewVendors.aspx.designer.cs">
+      <DependentUpon>ViewVendors.aspx</DependentUpon>
     </Compile>
     <Compile Include="WhiteListAirtimeReceipients.aspx.cs">
       <DependentUpon>WhiteListAirtimeReceipients.aspx</DependentUpon>
@@ -464,7 +679,8 @@
     <Content Include="AddVendor.aspx" />
     <Content Include="AddVendorUtilityMapping.aspx" />
     <Content Include="Admin.aspx" />
-    <Content Include="AgentCredit1.aspx" />
+    <Content Include="AgentCredit.aspx" />
+    <Content Include=".aspx" />
     <Content Include="AgentTotals.aspx" />
     <Content Include="AirtimeApproval.aspx" />
     <Content Include="AirtimeLogs.aspx" />
@@ -473,7 +689,6 @@
     <Content Include="ApproveCredits.aspx" />
     <Content Include="ApproveData.aspx" />
     <Content Include="ApproveTrans.aspx" />
-    <Content Include="AppTransactions.aspx" />
     <Compile Include="AccountantMaster.master.cs">
       <DependentUpon>AccountantMaster.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -482,54 +697,10 @@
       <DependentUpon>AccountBatch.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AgentTotals.aspx.cs">
-      <DependentUpon>AgentTotals.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AirtimeApproval.aspx.cs">
-      <DependentUpon>AirtimeApproval.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AirtimeLogs.aspx.cs">
-      <DependentUpon>AirtimeLogs.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AllCredit.aspx.cs">
-      <DependentUpon>AllCredit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AppErrors.aspx.cs">
-      <DependentUpon>AppErrors.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ApproveCredits.aspx.cs">
-      <DependentUpon>ApproveCredits.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ApproveData.aspx.cs">
-      <DependentUpon>ApproveData.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ApproveTrans.aspx.cs">
-      <DependentUpon>ApproveTrans.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AppTransactions.aspx.cs">
-      <DependentUpon>AppTransactions.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
     <Compile Include="App_Data\UssdSession.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>UssdSession.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="AreaDetails.aspx.cs">
-      <DependentUpon>AreaDetails.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AutoReconciliation.aspx.cs">
-      <DependentUpon>AutoReconciliation.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="BackAutoReconciliation.aspx.cs">
       <DependentUpon>BackAutoReconciliation.aspx</DependentUpon>
@@ -828,6 +999,7 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="AppTransactions.aspx" />
     <Content Include="App_Data\PublishProfiles\FolderProfile1.pubxml.user" />
     <Content Include="App_Data\PublishProfiles\Live.pubxml.user" />
     <Content Include="AreaDetails.aspx" />

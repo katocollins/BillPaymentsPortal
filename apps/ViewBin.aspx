@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/AccountantMaster.master" AutoEventWireup="true" CodeFile="ViewBin.aspx.cs" Inherits="ViewBin" Title="TRANSACTION BIN" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/AccountantMaster.master" AutoEventWireup="true" CodeFile="ViewBin.aspx.cs" Inherits="ViewBin" Title="TRANSACTION BIN" %>
 <%@ Register 
  Assembly="AjaxControlToolkit" 
  Namespace="AjaxControlToolkit" 

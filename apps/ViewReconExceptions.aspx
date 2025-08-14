@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/AccountantMaster.master" AutoEventWireup="true" CodeFile="ViewReconExceptions.aspx.cs" Inherits="VendorUtilityCredentials" Title="Vendor Utility Credentials" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/AccountantMaster.master" AutoEventWireup="true" CodeFile="ViewReconExceptions.aspx.cs" Inherits="VendorUtilityCredentials" Title="Vendor Utility Credentials" %>
 
 <%@ Register 
  Assembly="AjaxControlToolkit" 

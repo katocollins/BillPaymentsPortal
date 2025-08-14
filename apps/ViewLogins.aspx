@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/Setup.master" AutoEventWireup="true" CodeFile="ViewLogins.aspx.cs" Inherits="ViewLogins" Title="SYSTEM LOGINS" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Setup.master" AutoEventWireup="true" CodeFile="ViewLogins.aspx.cs" Inherits="ViewLogins" Title="SYSTEM LOGINS" %>
 <%@ Register 
  Assembly="AjaxControlToolkit" 
  Namespace="AjaxControlToolkit" 

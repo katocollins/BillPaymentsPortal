@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/AccountBatch.master" AutoEventWireup="true" CodeFile="ViewPayBatches.aspx.cs" Inherits="ViewPayBatches" Title="VIEW PAYMENT BATCHES" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/AccountBatch.master" AutoEventWireup="true" CodeFile="ViewPayBatches.aspx.cs" Inherits="ViewPayBatches" Title="VIEW PAYMENT BATCHES" %>
 
 <%@ Register Assembly="CrystalDecisions.Web, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304"
     Namespace="CrystalDecisions.Web" TagPrefix="CR" %>

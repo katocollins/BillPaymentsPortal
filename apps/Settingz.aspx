@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="Settingz.aspx.cs" Inherits="Settingz" Title="SYSTEM PARAMETERS" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="Settingz.aspx.cs" Inherits="Settingz" Title="SYSTEM PARAMETERS" %>
 <%@ Register 
  Assembly="AjaxControlToolkit" 
  Namespace="AjaxControlToolkit" 

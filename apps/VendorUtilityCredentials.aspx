@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="VendorUtilityCredentials.aspx.cs" Inherits="VendorUtilityCredentials" Title="Vendor Utility Credentials" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="VendorUtilityCredentials.aspx.cs" Inherits="VendorUtilityCredentials" Title="Vendor Utility Credentials" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
    <asp:MultiView ID="MultiView1" runat="server">

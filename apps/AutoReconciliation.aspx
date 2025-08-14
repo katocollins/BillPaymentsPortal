@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/AccountantMaster.master" AutoEventWireup="true" CodeFile="AutoReconciliation.aspx.cs" Inherits="AutoReconciliation" Title="AUTO RECONCILIATION" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/AccountantMaster.master" AutoEventWireup="true" CodeFile="AutoReconciliation.aspx.cs" Inherits="AutoReconciliation" Title="AUTO RECONCILIATION" %>
 
 <%@ Register Assembly="CrystalDecisions.Web, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304"
     Namespace="CrystalDecisions.Web" TagPrefix="CR" %>
