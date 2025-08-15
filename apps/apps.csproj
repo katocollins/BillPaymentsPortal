@@ -179,12 +179,26 @@
     <Compile Include="default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="FailedAirtime - Copy.aspx.cs">
+      <DependentUpon>FailedAirtime - Copy.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FailedAirtime - Copy.aspx.designer.cs">
+      <DependentUpon>FailedAirtime - Copy.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FailedAirtime.aspx.cs">
       <DependentUpon>FailedAirtime.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="FailedAirtime.aspx.designer.cs">
       <DependentUpon>FailedAirtime.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FailedErrorLogs - Copy.aspx.cs">
+      <DependentUpon>FailedErrorLogs - Copy.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FailedErrorLogs - Copy.aspx.designer.cs">
+      <DependentUpon>FailedErrorLogs - Copy.aspx</DependentUpon>
     </Compile>
     <Compile Include="FailedErrorLogs.aspx.cs">
       <DependentUpon>FailedErrorLogs.aspx</DependentUpon>
@@ -526,28 +540,36 @@
       <DependentUpon>ReconcilePrepaidTransactions.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ReconcilePrepaidTransactions1.aspx.cs">
-      <DependentUpon>ReconcilePrepaidTransactions1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ReconcilePrepaidTransactions1.aspx.designer.cs">
-      <DependentUpon>ReconcilePrepaidTransactions1.aspx</DependentUpon>
+    <Compile Include="ReconcilePrepaidTransactions.aspx.designer.cs">
+      <DependentUpon>ReconcilePrepaidTransactions.aspx</DependentUpon>
     </Compile>
     <Compile Include="Reconciliation.aspx.cs">
       <DependentUpon>Reconciliation.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Reconciliation.aspx.designer.cs">
+      <DependentUpon>Reconciliation.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ReconciliationTransactionReport.aspx.cs">
       <DependentUpon>ReconciliationTransactionReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReconciliationTransactionReport.aspx.designer.cs">
+      <DependentUpon>ReconciliationTransactionReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="ReconStatsByUser.aspx.cs">
       <DependentUpon>ReconStatsByUser.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="ReconStatsByUser.aspx.designer.cs">
+      <DependentUpon>ReconStatsByUser.aspx</DependentUpon>
+    </Compile>
     <Compile Include="RentalCollectionsTransaction.aspx.cs">
       <DependentUpon>RentalCollectionsTransaction.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RentalCollectionsTransaction.aspx.designer.cs">
+      <DependentUpon>RentalCollectionsTransaction.aspx</DependentUpon>
     </Compile>
     <Compile Include="ReportMaster.master.cs">
       <DependentUpon>ReportMaster.master</DependentUpon>
@@ -557,29 +579,50 @@
       <DependentUpon>Reports.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Reports.aspx.designer.cs">
+      <DependentUpon>Reports.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Repost.aspx.cs">
       <DependentUpon>Repost.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Repost.aspx.designer.cs">
+      <DependentUpon>Repost.aspx</DependentUpon>
     </Compile>
     <Compile Include="ResendTransaction.aspx.cs">
       <DependentUpon>ResendTransaction.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="ResendTransaction.aspx.designer.cs">
+      <DependentUpon>ResendTransaction.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ResponseRecon.aspx.cs">
       <DependentUpon>ResponseRecon.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ResponseRecon.aspx.designer.cs">
+      <DependentUpon>ResponseRecon.aspx</DependentUpon>
     </Compile>
     <Compile Include="RetryUssdTransactionsInFailedLogs.aspx.cs">
       <DependentUpon>RetryUssdTransactionsInFailedLogs.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="RetryUssdTransactionsInFailedLogs.aspx.designer.cs">
+      <DependentUpon>RetryUssdTransactionsInFailedLogs.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ReversePayments.aspx.cs">
       <DependentUpon>ReversePayments.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="ReversePayments.aspx.designer.cs">
+      <DependentUpon>ReversePayments.aspx</DependentUpon>
+    </Compile>
     <Compile Include="RunningBalances.aspx.cs">
       <DependentUpon>RunningBalances.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RunningBalances.aspx.designer.cs">
+      <DependentUpon>RunningBalances.aspx</DependentUpon>
     </Compile>
     <Compile Include="SearchVendorToken.aspx.cs">
       <DependentUpon>SearchVendorToken.aspx</DependentUpon>
@@ -2234,7 +2277,9 @@
     <Content Include="EODPrepaidBalances.aspx" />
     <Content Include="ErrorSubs.aspx" />
     <Content Include="ExceptionHandling.aspx" />
+    <Content Include="FailedAirtime - Copy.aspx" />
     <Content Include="FailedAirtime.aspx" />
+    <Content Include="FailedErrorLogs - Copy.aspx" />
     <Content Include="FailedErrorLogs.aspx" />
     <Content Include="FailTransactionandReverse.aspx" />
     <Content Include="FailedTransactionDetails.aspx" />
@@ -2330,7 +2375,6 @@
     <Content Include="ReconciledExceptions.aspx" />
     <Content Include="ReconciledTrans.aspx" />
     <Content Include="ReconcilePrepaidTransactions.aspx" />
-    <Content Include="ReconcilePrepaidTransactions1.aspx" />
     <Content Include="Reconciliation.aspx" />
     <Content Include="ReconciliationTransactionReport.aspx" />
     <Content Include="ReconStatsByUser.aspx" />
