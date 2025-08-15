@@ -1,1 +1,4 @@
 .vs
+# Ignore specific cache files
+apps/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+apps/obj/Debug/apps.csproj.AssemblyReference.cache
