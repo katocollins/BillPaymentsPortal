@@ -5,39 +5,42 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class OtherReports : System.Web.UI.Page
+namespace apps
 {
-    protected void Page_Load(object sender, EventArgs e)
+    public partial class OtherReports : System.Web.UI.Page
     {
-        if (Session["FullName"] == null)
+        protected void Page_Load(object sender, EventArgs e)
         {
-            Response.Redirect("Default.aspx");
-        }
-        else
-        {
-            string FullName = Session["FullName"].ToString();
-            string Area = Session["AreaName"].ToString();
-            string Branch = Session["DistrictName"].ToString();
-            string Role = Session["RoleName"].ToString();
-            string WelcomeMessage = "Welcome " + FullName;
-            lblWelcome.Text = WelcomeMessage;
+            if (Session["FullName"] == null)
+            {
+                Response.Redirect("Default.aspx");
+            }
+            else
+            {
+                string FullName = Session["FullName"].ToString();
+                string Area = Session["AreaName"].ToString();
+                string Branch = Session["DistrictName"].ToString();
+                string Role = Session["RoleName"].ToString();
+                string WelcomeMessage = "Welcome " + FullName;
+                lblWelcome.Text = WelcomeMessage;
 
-            lblUsage.Text = "Use the Buttons on your Left and Links above to Navigation System Activities and System forms respectively";
+                lblUsage.Text = "Use the Buttons on your Left and Links above to Navigation System Activities and System forms respectively";
 
-            Button MenuTool = (Button)Master.FindControl("btnCallSystemTool");
-            Button MenuPayment = (Button)Master.FindControl("btnCallPayments");
-            Button MenuReport = (Button)Master.FindControl("btnCalReports");
-            Button MenuRecon = (Button)Master.FindControl("btnCalRecon");
-            Button MenuAccount = (Button)Master.FindControl("btnCallAccountDetails");
-            Button MenuBatching = (Button)Master.FindControl("btnCallBatching");
-            Button MenuOtherReport = (Button)Master.FindControl("btnOtherReports");
-            MenuTool.Font.Underline = false;
-            MenuPayment.Font.Underline = false;
-            MenuReport.Font.Underline = false;
-            MenuRecon.Font.Underline = false;
-            MenuAccount.Font.Underline = false;
-            MenuBatching.Font.Underline = false;
-            MenuOtherReport.Font.Underline = true;
+                Button MenuTool = (Button)Master.FindControl("btnCallSystemTool");
+                Button MenuPayment = (Button)Master.FindControl("btnCallPayments");
+                Button MenuReport = (Button)Master.FindControl("btnCalReports");
+                Button MenuRecon = (Button)Master.FindControl("btnCalRecon");
+                Button MenuAccount = (Button)Master.FindControl("btnCallAccountDetails");
+                Button MenuBatching = (Button)Master.FindControl("btnCallBatching");
+                Button MenuOtherReport = (Button)Master.FindControl("btnOtherReports");
+                MenuTool.Font.Underline = false;
+                MenuPayment.Font.Underline = false;
+                MenuReport.Font.Underline = false;
+                MenuRecon.Font.Underline = false;
+                MenuAccount.Font.Underline = false;
+                MenuBatching.Font.Underline = false;
+                MenuOtherReport.Font.Underline = true;
+            }
         }
     }
 }

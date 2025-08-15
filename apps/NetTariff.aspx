@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="NetTariff.aspx.cs" 
+﻿<%@ Page Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="NetTariff.aspx.cs" 
 Inherits="NetTariff" 
 Title="SMS TARIFF"
 

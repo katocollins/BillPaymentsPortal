@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/PaymentMaster.master" AutoEventWireup="true" CodeFile="ManualReceipt.aspx.cs" Inherits="ManualReceipt" Title="MANUAL RECEIPT RANGES" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/PaymentMaster.master" AutoEventWireup="true" CodeFile="ManualReceipt.aspx.cs" Inherits="ManualReceipt" Title="MANUAL RECEIPT RANGES" %>
          <%@ Register 
  Assembly="AjaxControlToolkit" 
  Namespace="AjaxControlToolkit" 
@@ -256,6 +256,6 @@
        x1 = x1.replace(rgx, '$1' + ',' + '$2');
        return x1 + x2;
  }    
-   </script>
+     </script>
 </asp:Content>
 

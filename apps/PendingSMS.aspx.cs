@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections;
+﻿using InterLinkClass.ControlObjects;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -7,74 +7,76 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class PendingSMS : System.Web.UI.Page
+namespace apps
 {
-
-    BusinessLogin bll = new BusinessLogin();
-    string username = "";
-    string fullname = "";
-    string userBranch = "";
-    string userRole = "";
-    protected void Page_Load(object sender, EventArgs e)
+    public partial class PendingSMS : System.Web.UI.Page
     {
-        try
+
+        BusinessLogin bll = new BusinessLogin();
+        string username = "";
+        string fullname = "";
+        string userBranch = "";
+        string userRole = "";
+        protected void Page_Load(object sender, EventArgs e)
         {
-            username = Session["UserName"] as string;
-            fullname = Session["FullName"] as string;
-            userBranch = Session["UserBranch"] as string;
-            userRole = Session["RoleCode"] as string;
-
-            Session["IsError"] = null;
-
-            //Session is invalid
-            if (username == null)
+            try
             {
-                Response.Redirect("Default.aspx");
+                username = Session["UserName"] as string;
+                fullname = Session["FullName"] as string;
+                userBranch = Session["UserBranch"] as string;
+                userRole = Session["RoleCode"] as string;
+
+                Session["IsError"] = null;
+
+                //Session is invalid
+                if (username == null)
+                {
+                    Response.Redirect("Default.aspx");
+                }
+                else if (IsPostBack)
+                {
+
+                }
+
+                MultiView1.ActiveViewIndex = 0;
             }
-            else if (IsPostBack)
+            catch (Exception ex)
             {
-
+                bll.ShowMessage(lblmsg, ex.Message, true, Session);
             }
+        }
 
-            MultiView1.ActiveViewIndex = 0;
-        }
-        catch (Exception ex)
+        protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            bll.ShowMessage(lblmsg, ex.Message, true, Session);
+            try
+            {
+                SearchDb();
+            }
+            catch (Exception ex)
+            {
+                string msg = "FAILED: " + ex.Message;
+                bll.ShowMessage(lblmsg, msg, true, Session);
+            }
         }
-    }
-
-    protected void btnSubmit_Click(object sender, EventArgs e)
-    {
-        try
-        {
-            SearchDb();
-        }
-        catch (Exception ex)
-        {
-            string msg = "FAILED: " + ex.Message;
-            bll.ShowMessage(lblmsg, msg, true, Session);
-        }
-    }
 
 
-    private void SearchDb()
-    {
-        //DataTable dt = new DataTable();
-        try
+        private void SearchDb()
         {
-            //if (txtFromDate.Text.Equals(""))
-            //{
-            //    bll.ShowMessage(lblmsg, "From Date is required", true, Session);
-            //    txtFromDate.Focus();
-            //}
-            //if (txtToDate.Text.Equals(""))
-            //{
-            //    bll.ShowMessage(lblmsg, "To Date is required", true, Session);
-            //    txtFromDate.Focus();
-            //}
-            
-            //{
+            //DataTable dt = new DataTable();
+            try
+            {
+                //if (txtFromDate.Text.Equals(""))
+                //{
+                //    bll.ShowMessage(lblmsg, "From Date is required", true, Session);
+                //    txtFromDate.Focus();
+                //}
+                //if (txtToDate.Text.Equals(""))
+                //{
+                //    bll.ShowMessage(lblmsg, "To Date is required", true, Session);
+                //    txtFromDate.Focus();
+                //}
+
+                //{
                 //string[] searchParams = GetSearchParameters();
 
                 //string date = txtFromDate.Text.Trim();
@@ -94,7 +96,7 @@ public partial class PendingSMS : System.Web.UI.Page
                 if (dt.Rows.Count > 0)
                 {
                     //CalculateTotal(dt);
-                   
+
                     string msg = "Found " + dt.Rows.Count + " pending sms.";
 
 
@@ -113,29 +115,31 @@ public partial class PendingSMS : System.Web.UI.Page
 
                     //count.Text = dt.Rows.Count.ToString();
                     //telecom.Text = dt.Rows[0]["Telecom"].ToString();
-                    
+
                     //bll.ShowMessage(lblmsg, msg, false, Session);
-                }else
+                }
+                else
                 {
                     string msg = "NO PENDING SMS";
                     bll.ShowMessage(lblmsg, msg, false, Session);
                 }
-             
 
-            //}
 
+                //}
+
+            }
+            catch (Exception ex)
+            {
+
+                bll.ShowMessage(lblmsg, ex.Message, true, Session);
+            }
         }
-        catch (Exception ex)
-        {
-           
-            bll.ShowMessage(lblmsg, ex.Message, true, Session);
-        }
+
+        //private IEnumerable getData()
+        //{
+        //    DataSet ds = bll.ExecuteDataAccess("LiveSmsPortal", "GetPendingSMSCOUNT", searchParams);
+        //    dt = ds.Tables[0];
+
+        //}
     }
-
-    //private IEnumerable getData()
-    //{
-    //    DataSet ds = bll.ExecuteDataAccess("LiveSmsPortal", "GetPendingSMSCOUNT", searchParams);
-    //    dt = ds.Tables[0];
-
-    //}
 }

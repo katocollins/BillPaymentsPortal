@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/AccountantMaster.master" AutoEventWireup="true" CodeFile="InternalPayment.aspx.cs" Inherits="InternalPayment" Title="INTERNAL PAYMENT POSTING" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/AccountantMaster.master" AutoEventWireup="true" CodeFile="InternalPayment.aspx.cs" Inherits="InternalPayment" Title="INTERNAL PAYMENT POSTING" %>
 <%@ Register Assembly="CrystalDecisions.Web, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304"
     Namespace="CrystalDecisions.Web" TagPrefix="CR" %>
  <%@ Register 
@@ -274,7 +274,7 @@
        x1 = x1.replace(rgx, '$1' + ',' + '$2');
        return x1 + x2;
  }    
-   </script>
+ </script>
 
     <asp:Label ID="lblcode" runat="server" Text="0" Visible="False"></asp:Label><br />
     &nbsp;<ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender1" runat="server"

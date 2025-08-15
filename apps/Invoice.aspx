@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/PaymentMaster.master" AutoEventWireup="true" CodeFile="Invoice.aspx.cs" Inherits="Invoice" Title="INVOICING" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/PaymentMaster.master" AutoEventWireup="true" CodeFile="Invoice.aspx.cs" Inherits="Invoice" Title="INVOICING" %>
 <%@ Register Assembly="CrystalDecisions.Web, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304"
     Namespace="CrystalDecisions.Web" TagPrefix="CR" %>
  <%@ Register 
@@ -227,21 +227,20 @@
     </asp:MultiView>
     &nbsp; &nbsp; &nbsp;<br />    
  <script type ="text/javascript">
- 
- function Comma(Num)
- {
-       Num += '';
-       Num = Num.replace(',' , '');Num = Num.replace(',' , '');Num = Num.replace(',' , '');
-       Num = Num.replace(',' , '');Num = Num.replace(',' , '');Num = Num.replace(',' , '');
-       x = Num.split('.');
-       x1 = x[0];
-       x2 = x.length > 1 ? '.' + x[1] : '';
-       var rgx = /(\d+)(\d{3})/;
-       while (rgx.test(x1))
-       x1 = x1.replace(rgx, '$1' + ',' + '$2');
-       return x1 + x2;
- }    
-   </script>
+
+     function Comma(Num) {
+         Num += '';
+         Num = Num.replace(',', ''); Num = Num.replace(',', ''); Num = Num.replace(',', '');
+         Num = Num.replace(',', ''); Num = Num.replace(',', ''); Num = Num.replace(',', '');
+         x = Num.split('.');
+         x1 = x[0];
+         x2 = x.length > 1 ? '.' + x[1] : '';
+         var rgx = /(\d+)(\d{3})/;
+         while (rgx.test(x1))
+             x1 = x1.replace(rgx, '$1' + ',' + '$2');
+         return x1 + x2;
+     }
+ </script>
 
     <asp:Label ID="lblvat" runat="server" Text="0" Visible="False"></asp:Label><br />
     <ajaxToolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender1" runat="server"

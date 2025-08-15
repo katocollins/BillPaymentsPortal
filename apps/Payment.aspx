@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/PaymentMaster.master" AutoEventWireup="true" CodeFile="Payment.aspx.cs" Inherits="Payment" Title="PAYMENTS" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/PaymentMaster.master" AutoEventWireup="true" CodeFile="Payment.aspx.cs" Inherits="Payment" Title="PAYMENTS" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <table style="width: 100%">
         <tr>

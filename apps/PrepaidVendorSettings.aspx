@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/Setup.master" AutoEventWireup="true" CodeFile="PrepaidVendorSettings.aspx.cs" Inherits="PrepaidVendorSettings" Title="Untitled Page" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Setup.master" AutoEventWireup="true" CodeFile="PrepaidVendorSettings.aspx.cs" Inherits="PrepaidVendorSettings" Title="Untitled Page" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <table align="center" cellpadding="0" cellspacing="0" class="style12" style="border-right: #617da6 1px solid; border-top: #617da6 1px solid; border-left: #617da6 1px solid; width: 80%; border-bottom: #617da6 1px solid">
         <tr>
