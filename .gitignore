@@ -2,3 +2,8 @@
 # Ignore specific cache files
 apps/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
 apps/obj/Debug/apps.csproj.AssemblyReference.cache
+**/obj/
+apps/obj/
+# Ignore build results
+bin/
+obj/
