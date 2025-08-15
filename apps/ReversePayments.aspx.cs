@@ -10,308 +10,308 @@ using System.Web.UI.WebControls;
 
 namespace apps
 {
-    public partial class ReversePayments : System.Web.UI.Page
+public partial class ReversePayments : System.Web.UI.Page
+{
+    ProcessPay Process = new ProcessPay();
+    DataLogin datafile = new DataLogin();
+    Datapay datapay = new Datapay();
+    BusinessLogin bll = new BusinessLogin();
+    DataTable dataTable = new DataTable();
+    DataTable dtable = new DataTable();
+    private ReportDocument Rptdoc = new ReportDocument();
+    protected void Page_Load(object sender, EventArgs e)
     {
-        ProcessPay Process = new ProcessPay();
-        DataLogin datafile = new DataLogin();
-        Datapay datapay = new Datapay();
-        BusinessLogin bll = new BusinessLogin();
-        DataTable dataTable = new DataTable();
-        DataTable dtable = new DataTable();
-        private ReportDocument Rptdoc = new ReportDocument();
-        protected void Page_Load(object sender, EventArgs e)
+        try
         {
-            try
+            if (IsPostBack == false)
             {
-                if (IsPostBack == false)
-                {
-                    LoadCashiers();
-                    LoadPayTypes();
-                    MultiView1.ActiveViewIndex = -1;
-                    Button MenuTool = (Button)Master.FindControl("btnCallSystemTool");
-                    Button MenuPayment = (Button)Master.FindControl("btnCallPayments");
-                    Button MenuReport = (Button)Master.FindControl("btnCalReports");
-                    Button MenuRecon = (Button)Master.FindControl("btnCalRecon");
-                    Button MenuAccount = (Button)Master.FindControl("btnCallAccountDetails");
-                    Button MenuBatching = (Button)Master.FindControl("btnCallBatching");
-                    MenuTool.Font.Underline = false;
-                    MenuPayment.Font.Underline = true;
-                    MenuReport.Font.Underline = false;
-                    MenuRecon.Font.Underline = false;
-                    MenuAccount.Font.Underline = false;
-                    MenuBatching.Font.Underline = false;
-                    lblTotal.Visible = false;
-                    DisableBtnsOnClick();
-                }
-            }
-            catch (Exception ex)
-            {
-                ShowMessage(ex.Message, true);
+                LoadCashiers();
+                LoadPayTypes();
+                MultiView1.ActiveViewIndex = -1;
+                Button MenuTool = (Button)Master.FindControl("btnCallSystemTool");
+                Button MenuPayment = (Button)Master.FindControl("btnCallPayments");
+                Button MenuReport = (Button)Master.FindControl("btnCalReports");
+                Button MenuRecon = (Button)Master.FindControl("btnCalRecon");
+                Button MenuAccount = (Button)Master.FindControl("btnCallAccountDetails");
+                Button MenuBatching = (Button)Master.FindControl("btnCallBatching");
+                MenuTool.Font.Underline = false;
+                MenuPayment.Font.Underline = true;
+                MenuReport.Font.Underline = false;
+                MenuRecon.Font.Underline = false;
+                MenuAccount.Font.Underline = false;
+                MenuBatching.Font.Underline = false;
+                lblTotal.Visible = false;
+                DisableBtnsOnClick();
             }
         }
-        private void Page_Unload(object sender, EventArgs e)
+        catch (Exception ex)
         {
-            if (Rptdoc != null)
-            {
-                Rptdoc.Close();
-                Rptdoc.Dispose();
-                GC.Collect();
-            }
+            ShowMessage(ex.Message, true);
         }
-        private void LoadCashiers()
+    }
+    private void Page_Unload(object sender, EventArgs e)
+    {
+        if (Rptdoc != null)
+        {
+            Rptdoc.Close();
+            Rptdoc.Dispose();
+            GC.Collect();
+        }
+    }
+    private void LoadCashiers()
+    {
+        string districtcode = GetDistrictCode();
+        dtable = datafile.GetCashiers(districtcode);
+        cboCashier.DataSource = dtable;
+        cboCashier.DataValueField = "Username";
+        cboCashier.DataTextField = "FullName";
+        cboCashier.DataBind();
+    }
+
+    private string GetDistrictCode()
+    {
+        string ret = "0";
+        string role = Session["RoleCode"].ToString();
+        if (role.Equals("004") || role.Equals("005"))
+        {
+            ret = Session["DistrictCode"].ToString();
+        }
+        return ret;
+    }
+    private void LoadPayTypes()
+    {
+        dtable = datafile.GetPayTypes();
+        cboPaymentType.DataSource = dtable;
+        cboPaymentType.DataValueField = "PaymentCode";
+        cboPaymentType.DataTextField = "PaymentType";
+        cboPaymentType.DataBind();
+    }
+    private void DisableBtnsOnClick()
+    {
+        string strProcessScript = "this.value='Working...';this.disabled=true;";
+        btnOK.Attributes.Add("onclick", strProcessScript + ClientScript.GetPostBackEventReference(btnOK, "").ToString());
+        btnReverse.Attributes.Add("onclick", strProcessScript + ClientScript.GetPostBackEventReference(btnReverse, "").ToString());
+
+    }
+    protected void btnOK_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            LoadPayments();
+        }
+        catch (Exception ex)
+        {
+            ShowMessage(ex.Message, true);
+        }
+    }
+
+    private void LoadPayments()
+    {
+        if (txtfromDate.Text.Equals(""))
+        {
+            DataGrid1.Visible = false;
+            ShowMessage("From Date is required", true);
+            txtfromDate.Focus();
+        }
+        else
         {
             string districtcode = GetDistrictCode();
-            dtable = datafile.GetCashiers(districtcode);
-            cboCashier.DataSource = dtable;
-            cboCashier.DataValueField = "Username";
-            cboCashier.DataTextField = "FullName";
-            cboCashier.DataBind();
-        }
-
-        private string GetDistrictCode()
-        {
-            string ret = "0";
-            string role = Session["RoleCode"].ToString();
-            if (role.Equals("004") || role.Equals("005"))
+            string Receiptno = txtReceiptno.Text.Trim();
+            string Paymentcode = cboPaymentType.SelectedValue.ToString();
+            string Paymode = cboPaymode.SelectedValue.ToString();
+            DateTime fromdate = bll.ReturnDate(txtfromDate.Text.Trim(), 1);
+            DateTime todate = bll.ReturnDate(txttoDate.Text.Trim(), 2);
+            string teller = cboCashier.SelectedValue.ToString();
+            dataTable = datapay.GetPaymentsToReverse(districtcode, Receiptno, Paymentcode, Paymode, teller, fromdate, todate);
+            DataGrid1.DataSource = dataTable;
+            DataGrid1.DataBind();
+            if (dataTable.Rows.Count > 0)
             {
-                ret = Session["DistrictCode"].ToString();
-            }
-            return ret;
-        }
-        private void LoadPayTypes()
-        {
-            dtable = datafile.GetPayTypes();
-            cboPaymentType.DataSource = dtable;
-            cboPaymentType.DataValueField = "PaymentCode";
-            cboPaymentType.DataTextField = "PaymentType";
-            cboPaymentType.DataBind();
-        }
-        private void DisableBtnsOnClick()
-        {
-            string strProcessScript = "this.value='Working...';this.disabled=true;";
-            btnOK.Attributes.Add("onclick", strProcessScript + ClientScript.GetPostBackEventReference(btnOK, "").ToString());
-            btnReverse.Attributes.Add("onclick", strProcessScript + ClientScript.GetPostBackEventReference(btnReverse, "").ToString());
-
-        }
-        protected void btnOK_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                LoadPayments();
-            }
-            catch (Exception ex)
-            {
-                ShowMessage(ex.Message, true);
-            }
-        }
-
-        private void LoadPayments()
-        {
-            if (txtfromDate.Text.Equals(""))
-            {
-                DataGrid1.Visible = false;
-                ShowMessage("From Date is required", true);
-                txtfromDate.Focus();
+                CalculateTotal(dataTable);
+                MultiView1.ActiveViewIndex = 0;
+                DataGrid1.Visible = true;
+                lblTotal.Visible = true;
+                ShowMessage(".", true);
             }
             else
             {
-                string districtcode = GetDistrictCode();
-                string Receiptno = txtReceiptno.Text.Trim();
-                string Paymentcode = cboPaymentType.SelectedValue.ToString();
-                string Paymode = cboPaymode.SelectedValue.ToString();
-                DateTime fromdate = bll.ReturnDate(txtfromDate.Text.Trim(), 1);
-                DateTime todate = bll.ReturnDate(txttoDate.Text.Trim(), 2);
-                string teller = cboCashier.SelectedValue.ToString();
-                dataTable = datapay.GetPaymentsToReverse(districtcode, Receiptno, Paymentcode, Paymode, teller, fromdate, todate);
-                DataGrid1.DataSource = dataTable;
-                DataGrid1.DataBind();
-                if (dataTable.Rows.Count > 0)
-                {
-                    CalculateTotal(dataTable);
-                    MultiView1.ActiveViewIndex = 0;
-                    DataGrid1.Visible = true;
-                    lblTotal.Visible = true;
-                    ShowMessage(".", true);
-                }
-                else
-                {
-                    lblTotal.Text = ".";
-                    DataGrid1.Visible = false;
-                    lblTotal.Visible = false;
-                    MultiView1.ActiveViewIndex = -1;
-                    ShowMessage("No Record found", true);
-                }
+                lblTotal.Text = ".";
+                DataGrid1.Visible = false;
+                lblTotal.Visible = false;
+                MultiView1.ActiveViewIndex = -1;
+                ShowMessage("No Record found", true);
             }
         }
+    }
 
-        private void CalculateTotal(DataTable Table)
+    private void CalculateTotal(DataTable Table)
+    {
+        double total = 0;
+        foreach (DataRow dr in Table.Rows)
         {
-            double total = 0;
-            foreach (DataRow dr in Table.Rows)
+            double amount = double.Parse(dr["Amount"].ToString());
+            total += amount;
+        }
+        lblTotal.Text = "Total Amount of Payments [" + total.ToString("#,##0") + "]";
+    }
+    private void LoadUsers()
+    {
+
+        DataGrid1.DataSource = dataTable;
+        DataGrid1.DataBind();
+    }
+    private void ShowMessage(string Message, bool Error)
+    {
+        Label lblmsg = (Label)Master.FindControl("lblmsg");
+        if (Error) { lblmsg.ForeColor = System.Drawing.Color.Red; lblmsg.Font.Bold = false; }
+        else { lblmsg.ForeColor = System.Drawing.Color.Black; lblmsg.Font.Bold = true; }
+        if (Message == ".")
+        {
+            lblmsg.Text = ".";
+        }
+        else
+        {
+            lblmsg.Text = "MESSAGE: " + Message.ToUpper();
+        }
+    }
+
+    protected void DataGrid1_ItemCommand(object source, DataGridCommandEventArgs e)
+    {
+        try
+        {
+            if (e.CommandName.Equals("btnPrint"))
             {
-                double amount = double.Parse(dr["Amount"].ToString());
-                total += amount;
+                string receiptno = e.Item.Cells[2].Text;
+                string vendorcode = e.Item.Cells[3].Text;
+                Session["frompage"] = "ViewPayments.aspx";
+                Response.Redirect("./Receipt.aspx?transfereid=" + receiptno + "&transferecode=" + vendorcode, false);
             }
-            lblTotal.Text = "Total Amount of Payments [" + total.ToString("#,##0") + "]";
         }
-        private void LoadUsers()
+        catch (Exception ex)
         {
-
+            ShowMessage(ex.Message, true);
+        }
+    }
+    protected void DataGrid1_PageIndexChanged(object source, DataGridPageChangedEventArgs e)
+    {
+        try
+        {
+            string districtcode = GetDistrictCode();
+            string Receiptno = txtReceiptno.Text.Trim();
+            string Paymentcode = cboPaymentType.SelectedValue.ToString();
+            string Paymode = cboPaymode.SelectedValue.ToString();
+            DateTime fromdate = bll.ReturnDate(txtfromDate.Text.Trim(), 1);
+            DateTime todate = bll.ReturnDate(txttoDate.Text.Trim(), 2);
+            string teller = cboCashier.SelectedValue.ToString();
+            dataTable = datapay.GetPayments(districtcode, Receiptno, Paymentcode, Paymode, teller, fromdate, todate);
+            DataGrid1.CurrentPageIndex = e.NewPageIndex;
             DataGrid1.DataSource = dataTable;
             DataGrid1.DataBind();
         }
-        private void ShowMessage(string Message, bool Error)
+        catch (Exception ex)
         {
-            Label lblmsg = (Label)Master.FindControl("lblmsg");
-            if (Error) { lblmsg.ForeColor = System.Drawing.Color.Red; lblmsg.Font.Bold = false; }
-            else { lblmsg.ForeColor = System.Drawing.Color.Black; lblmsg.Font.Bold = true; }
-            if (Message == ".")
+            ShowMessage(ex.Message, true);
+        }
+
+    }
+
+    protected void cboVendor_DataBound(object sender, EventArgs e)
+    {
+        cboCashier.Items.Insert(0, new ListItem("All Cashiers", "0"));
+    }
+    protected void cboPaymentType_DataBound(object sender, EventArgs e)
+    {
+        cboPaymentType.Items.Insert(0, new ListItem("All Payment Types", "0"));
+    }
+    protected void chkSelect_CheckedChanged(object sender, EventArgs e)
+    {
+        try
+        {
+            SelectAllItems();
+            if (chkSelect.Checked == true)
             {
-                lblmsg.Text = ".";
+                CheckBox2.Checked = true;
             }
             else
             {
-                lblmsg.Text = "MESSAGE: " + Message.ToUpper();
+                CheckBox2.Checked = false;
             }
         }
-
-        protected void DataGrid1_ItemCommand(object source, DataGridCommandEventArgs e)
+        catch (Exception ex)
         {
-            try
-            {
-                if (e.CommandName.Equals("btnPrint"))
-                {
-                    string receiptno = e.Item.Cells[2].Text;
-                    string vendorcode = e.Item.Cells[3].Text;
-                    Session["frompage"] = "ViewPayments.aspx";
-                    Response.Redirect("./Receipt.aspx?transfereid=" + receiptno + "&transferecode=" + vendorcode, false);
-                }
-            }
-            catch (Exception ex)
-            {
-                ShowMessage(ex.Message, true);
-            }
-        }
-        protected void DataGrid1_PageIndexChanged(object source, DataGridPageChangedEventArgs e)
-        {
-            try
-            {
-                string districtcode = GetDistrictCode();
-                string Receiptno = txtReceiptno.Text.Trim();
-                string Paymentcode = cboPaymentType.SelectedValue.ToString();
-                string Paymode = cboPaymode.SelectedValue.ToString();
-                DateTime fromdate = bll.ReturnDate(txtfromDate.Text.Trim(), 1);
-                DateTime todate = bll.ReturnDate(txttoDate.Text.Trim(), 2);
-                string teller = cboCashier.SelectedValue.ToString();
-                dataTable = datapay.GetPayments(districtcode, Receiptno, Paymentcode, Paymode, teller, fromdate, todate);
-                DataGrid1.CurrentPageIndex = e.NewPageIndex;
-                DataGrid1.DataSource = dataTable;
-                DataGrid1.DataBind();
-            }
-            catch (Exception ex)
-            {
-                ShowMessage(ex.Message, true);
-            }
-
-        }
-
-        protected void cboVendor_DataBound(object sender, EventArgs e)
-        {
-            cboCashier.Items.Insert(0, new ListItem("All Cashiers", "0"));
-        }
-        protected void cboPaymentType_DataBound(object sender, EventArgs e)
-        {
-            cboPaymentType.Items.Insert(0, new ListItem("All Payment Types", "0"));
-        }
-        protected void chkSelect_CheckedChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                SelectAllItems();
-                if (chkSelect.Checked == true)
-                {
-                    CheckBox2.Checked = true;
-                }
-                else
-                {
-                    CheckBox2.Checked = false;
-                }
-            }
-            catch (Exception ex)
-            {
-                ShowMessage(ex.Message, true);
-            }
-        }
-        protected void CheckBox2_CheckedChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                SelectAllItems();
-                if (CheckBox2.Checked == true)
-                {
-                    chkSelect.Checked = true;
-                }
-                else
-                {
-                    chkSelect.Checked = false;
-                }
-            }
-            catch (Exception ex)
-            {
-                ShowMessage(ex.Message, true);
-            }
-        }
-        private void SelectAllItems()
-        {
-            foreach (DataGridItem Items in DataGrid1.Items)
-            {
-                CheckBox chk = ((CheckBox)(Items.FindControl("CheckBox1")));
-                if (chk.Checked)
-                {
-                    chk.Checked = false;
-                }
-                else
-                {
-                    chk.Checked = true;
-                }
-            }
-        }
-        protected void btnReverse_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string str = GetRecordsToReverse().TrimEnd(',');
-                string ret = Process.Reversestr(str, "", false);
-                if (ret.Contains("Successfully"))
-                {
-                    LoadPayments();
-                    ShowMessage(ret, false);
-                }
-                else
-                {
-                    ShowMessage(ret, true);
-                }
-            }
-            catch (Exception ex)
-            {
-                ShowMessage(ex.Message, true);
-            }
-        }
-        private string GetRecordsToReverse()
-        {
-            int Count = 0;
-            string ItemArr = "";
-            foreach (DataGridItem Items in DataGrid1.Items)
-            {
-                CheckBox chk = ((CheckBox)(Items.FindControl("CheckBox1")));
-                if (chk.Checked)
-                {
-                    Count++;
-                    string ItemFound = Items.Cells[0].Text;
-                    ItemArr = ItemArr += ItemFound + ",";
-                }
-            }
-            return ItemArr;
+            ShowMessage(ex.Message, true);
         }
     }
+    protected void CheckBox2_CheckedChanged(object sender, EventArgs e)
+    {
+        try
+        {
+            SelectAllItems();
+            if (CheckBox2.Checked == true)
+            {
+                chkSelect.Checked = true;
+            }
+            else
+            {
+                chkSelect.Checked = false;
+            }
+        }
+        catch (Exception ex)
+        {
+            ShowMessage(ex.Message, true);
+        }
+    }
+    private void SelectAllItems()
+    {
+        foreach (DataGridItem Items in DataGrid1.Items)
+        {
+            CheckBox chk = ((CheckBox)(Items.FindControl("CheckBox1")));
+            if (chk.Checked)
+            {
+                chk.Checked = false;
+            }
+            else
+            {
+                chk.Checked = true;
+            }
+        }
+    }
+    protected void btnReverse_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            string str = GetRecordsToReverse().TrimEnd(',');
+                string ret = Process.Reversestr(str, "", false);
+            if (ret.Contains("Successfully"))
+            {
+                LoadPayments();
+                ShowMessage(ret, false);
+            }
+            else
+            {
+                ShowMessage(ret, true);
+            }
+        }
+        catch (Exception ex)
+        {
+            ShowMessage(ex.Message, true);
+        }
+    }
+    private string GetRecordsToReverse()
+    {
+        int Count = 0;
+        string ItemArr = "";
+        foreach (DataGridItem Items in DataGrid1.Items)
+        {
+            CheckBox chk = ((CheckBox)(Items.FindControl("CheckBox1")));
+            if (chk.Checked)
+            {
+                Count++;
+                string ItemFound = Items.Cells[0].Text;
+                ItemArr = ItemArr += ItemFound + ",";
+            }
+        }
+        return ItemArr;
+    }
+}
 }

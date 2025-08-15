@@ -1012,20 +1012,192 @@
       <DependentUpon>ExceptionHandling.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="FailedAirtime.aspx.cs">
+      <DependentUpon>FailedAirtime.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FailedErrorLogs.aspx.cs">
+      <DependentUpon>FailedErrorLogs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FailedTransactionDetails.aspx.cs">
+      <DependentUpon>FailedTransactionDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FailedTransactions.aspx.cs">
+      <DependentUpon>FailedTransactions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FailTransactionandReverse.aspx.cs">
+      <DependentUpon>FailTransactionandReverse.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FileProcess.aspx.cs">
+      <DependentUpon>FileProcess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="General.master.cs">
       <DependentUpon>General.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GenerateProdLicense.aspx.cs">
+      <DependentUpon>GenerateProdLicense.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GenerateTestLicense.aspx.cs">
+      <DependentUpon>GenerateTestLicense.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InitateDataTransaction.aspx.cs">
+      <DependentUpon>InitateDataTransaction.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InterfaceErrorLogs.aspx.cs">
+      <DependentUpon>InterfaceErrorLogs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceErrors.aspx.cs">
+      <DependentUpon>interfaceErrors.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InternalPayment.aspx.cs">
+      <DependentUpon>InternalPayment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InternetworkTransactions.aspx.cs">
+      <DependentUpon>InternetworkTransactions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Invoice.aspx.cs">
+      <DependentUpon>Invoice.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Main.master.cs">
       <DependentUpon>Main.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="MakeFortebetPayment.aspx.cs">
+      <DependentUpon>MakeFortebetPayment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MakeManualPayment.aspx.cs">
+      <DependentUpon>MakeManualPayment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MakePayment.aspx.cs">
+      <DependentUpon>MakePayment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ManualReceipt.aspx.cs">
+      <DependentUpon>ManualReceipt.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MerchantFiles.aspx.cs">
+      <DependentUpon>MerchantFiles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MerchantLogs.aspx.cs">
+      <DependentUpon>MerchantLogs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MerchantReconciliation.aspx.cs">
+      <DependentUpon>MerchantReconciliation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MoMoLogs.aspx.cs">
+      <DependentUpon>MoMoLogs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MonitorWaveTransactionsSenttoBank.aspx.cs">
+      <DependentUpon>MonitorWaveTransactionsSenttoBank.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MonthlyTransactionsReport.aspx.cs">
+      <DependentUpon>MonthlyTransactionsReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MTNDataReports.aspx.cs">
+      <DependentUpon>MTNDataReports.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NetTariff.aspx.cs">
+      <DependentUpon>NetTariff.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NWSCReversals.aspx.cs">
+      <DependentUpon>NWSCReversals.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OtherReports.aspx.cs">
+      <DependentUpon>OtherReports.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="OtherReportsmaster.master.cs">
       <DependentUpon>OtherReportsmaster.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Payment.aspx.cs">
+      <DependentUpon>Payment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="PaymentMaster.master.cs">
       <DependentUpon>PaymentMaster.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PayTypes.aspx.cs">
+      <DependentUpon>PayTypes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PegasusClientReport.aspx.cs">
+      <DependentUpon>PegasusClientReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PendingSMS.aspx.cs">
+      <DependentUpon>PendingSMS.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PostChequeBounce.aspx.cs">
+      <DependentUpon>PostChequeBounce.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PostedTrans.aspx.cs">
+      <DependentUpon>PostedTrans.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PostReversal.aspx.cs">
+      <DependentUpon>PostReversal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PrepaidAutoReconciliation.aspx.cs">
+      <DependentUpon>PrepaidAutoReconciliation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PrepaidTimeDifferenceLogs.aspx.cs">
+      <DependentUpon>PrepaidTimeDifferenceLogs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PrepaidValidationTimeDifference.aspx.cs">
+      <DependentUpon>PrepaidValidationTimeDifference.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PrepaidVendorPayment.aspx.cs">
+      <DependentUpon>PrepaidVendorPayment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PrepaidVendorSettings.aspx.cs">
+      <DependentUpon>PrepaidVendorSettings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PrepaidVendorXMLLogs.aspx.cs">
+      <DependentUpon>PrepaidVendorXMLLogs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PrepaymentTrans.aspx.cs">
+      <DependentUpon>PrepaymentTrans.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProcessUnmatched.aspx.cs">
+      <DependentUpon>ProcessUnmatched.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -2284,6 +2456,7 @@
     <Content Include="FailTransactionandReverse.aspx" />
     <Content Include="FailedTransactionDetails.aspx" />
     <Content Include="FailedTransactions.aspx" />
+    <Content Include="FailTransactionandReverse.aspx" />
     <Content Include="FileProcess.aspx" />
     <Content Include="GenerateProdLicense.aspx" />
     <Content Include="GenerateTestLicense.aspx" />
